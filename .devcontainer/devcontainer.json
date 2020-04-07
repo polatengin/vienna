@@ -6,4 +6,5 @@
     "/var/run/docker.sock:/var/run/docker.sock"
   ],
   "postCreateCommand": "cd ./src/web-client && npm i && cd ../server && npm i",
+  "forwardPorts": [3000, 4200],
 }
