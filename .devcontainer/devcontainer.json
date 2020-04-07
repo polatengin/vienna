@@ -9,5 +9,6 @@
   "forwardPorts": [3000, 4200],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
+    "workbench.iconTheme": "vscode-icons"
   },
 }
