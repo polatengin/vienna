@@ -8,5 +8,6 @@
   "postCreateCommand": "cd ./src/web-client && npm i && cd ../server && npm i",
   "forwardPorts": [3000, 4200],
   "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
   },
 }
