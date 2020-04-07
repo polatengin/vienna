@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.send('Vienna is working 🥳');
 });
 
+app.post('/login', (req, res) => {
+  res.send(req.body);
+});
+
 app.listen(port, err => {
   if (err) {
     return console.error(err);
