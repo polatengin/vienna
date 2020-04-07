@@ -4,4 +4,8 @@
   "description": "Vienna Project",
   "author": "polatengin",
   "homepage": "https://github.com/polatengin/vienna",
+  "scripts": {
+    "start": "ng serve"
+  },
+  "private": true,
 }
