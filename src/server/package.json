@@ -7,4 +7,5 @@
     "start": "tsc && node dist/app.js"
   },
   "author": "polatengin",
+  "license": "ISC",
 }
