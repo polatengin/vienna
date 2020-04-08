@@ -4,6 +4,7 @@
   "description": "Vienna Project",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon",
     "build": "npx tsc --project .",
     "production": "npm run build && node ./dist/app.js"
   },
