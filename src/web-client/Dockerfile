@@ -19,3 +19,5 @@ FROM nginx:1.17.9-alpine as production
 USER root
 
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/default.conf /etc/nginx/conf.d
+
