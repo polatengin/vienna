@@ -4,7 +4,7 @@
   "description": "Vienna Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "build": "npx tsc --project .",
   },
   "author": "polatengin",
   "license": "ISC",
