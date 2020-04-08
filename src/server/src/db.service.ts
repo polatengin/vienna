@@ -6,3 +6,4 @@ const DoctorSchema = new mongoose.Schema({
   password: String,
   isActive: Boolean,
 });
+export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema);
