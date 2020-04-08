@@ -4,7 +4,7 @@
   "description": "Vienna Project",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js"
+    "start": "nodemon"
   },
   "author": "polatengin",
   "license": "ISC",
