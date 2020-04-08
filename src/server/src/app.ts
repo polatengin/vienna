@@ -9,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const db = new MongoConnection();
 
+db.init(process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD);
 
 app.use(bodyparser.json());
 
