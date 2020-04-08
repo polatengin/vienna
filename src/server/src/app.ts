@@ -15,7 +15,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  res.send(req.body);
+  let query = {
+    phoneNumber: req.body.phoneNumber,
+    password: req.body.password,
+    isActive: true
+  };
 });
 
 app.listen(port, () => {
