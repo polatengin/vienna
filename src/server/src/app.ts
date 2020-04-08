@@ -1,6 +1,7 @@
 import express from 'express';
 import * as bodyparser from 'body-parser';
 
+import { MongoConnection, DoctorsCollection } from './db.service';
 const app = express();
 const port = 3000;
 
