@@ -11,9 +11,6 @@ app.post('/login', (req, res) => {
   res.send(req.body);
 });
 
-app.listen(port, err => {
-  if (err) {
-    return console.error(err);
-  }
+app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
 });
