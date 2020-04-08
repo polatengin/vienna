@@ -20,6 +20,12 @@ app.post('/login', (req, res) => {
     password: req.body.password,
     isActive: true
   };
+  DoctorsCollection.findOne(query, (error, _) => {
+    if (error) {
+      res.status(404).send(error);
+    }
+    res.json(_ || {});
+  });
 });
 
 app.listen(port, () => {
