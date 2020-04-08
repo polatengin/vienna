@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc --project .",
+    "production": "npm run build && node ./dist/app.js"
   },
   "author": "polatengin",
   "license": "ISC",
