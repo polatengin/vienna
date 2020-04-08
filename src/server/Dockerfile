@@ -4,3 +4,5 @@ WORKDIR /vienna
 
 COPY . .
 
+RUN npm i
+
