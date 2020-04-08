@@ -16,3 +16,4 @@ RUN ng build --prod --output-path=/app/dist
 
 FROM nginx:1.17.9-alpine as production
 
+USER root
