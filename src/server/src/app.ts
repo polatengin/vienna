@@ -11,7 +11,7 @@ const port = 3000;
 app.use(bodyparser.json());
 
 app.get('/', (req, res) => {
-  res.send('Vienna is working 🥳');
+  res.status(200).send('Vienna is working 🥳');
 });
 
 app.post('/login', (req, res) => {
