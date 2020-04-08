@@ -7,3 +7,7 @@ const DoctorSchema = new mongoose.Schema({
   isActive: Boolean,
 });
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema);
+
+export class MongoConnection {
+
+}
