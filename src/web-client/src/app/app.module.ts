@@ -13,6 +13,7 @@ import { ApiService } from './services/api.service';
 import { AppComponent } from './app.component';
 
 import { LoginPageComponent } from './pages/login/login';
+import { PatientListPageComponent } from './pages/patient-list/patient-list';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    PatientListPageComponent
   ],
   imports: [
     BrowserModule,
