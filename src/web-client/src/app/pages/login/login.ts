@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 
 import { LoginRequestModel } from '../../models/api-models';
 
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../services/api.service';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginPageComponent {
 
-  constructor(private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+    layout.updateTitle('Login');
   }
 
   request: LoginRequestModel = new LoginRequestModel();
