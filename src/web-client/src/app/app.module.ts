@@ -17,7 +17,8 @@ import { PatientListPageComponent } from './pages/patient-list/patient-list';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginPageComponent }
+  { path: 'login', component: LoginPageComponent },
+  { path: 'patient-list', component: PatientListPageComponent }
 ];
 
 @NgModule({
