@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-button mat-icon-button *ngIf="isLoggedIn$ | async"><mat-icon>menu</mat-icon></button>
+    <button mat-button mat-icon-button *ngIf="hasBack$ | async"><mat-icon>arrow_back</mat-icon></button>
     <span>&nbsp;Login</span>
+    <span class="fill-space"></span>
+    <button mat-button mat-icon-button *ngIf="isLoggedIn$ | async"><mat-icon>menu</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>
 
