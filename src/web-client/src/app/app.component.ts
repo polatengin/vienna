@@ -14,9 +14,11 @@ export class AppComponent {
 
   isLoggedIn$: Observable<boolean>;
   hasBack$: Observable<boolean>;
+  title$: Observable<string>;
 
   ngOnInit() {
     this.isLoggedIn$ = this.layoutService.isLoggedIn;
     this.hasBack$ = this.layoutService.hasBack;
+    this.title$ = this.layoutService.title;
   }
 }
