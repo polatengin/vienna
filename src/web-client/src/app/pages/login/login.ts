@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoginRequestModel } from '../../models/api-models';
+
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginPageComponent {
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
   }
 
   request: LoginRequestModel = new LoginRequestModel();
