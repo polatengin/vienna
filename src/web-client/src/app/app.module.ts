@@ -8,6 +8,7 @@ import { ThemeModule } from './theme.module';
 import { AppComponent } from './app.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent }
 ];
 
 @NgModule({
