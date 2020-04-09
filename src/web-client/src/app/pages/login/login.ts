@@ -16,7 +16,8 @@ export class LoginPageComponent {
   request: LoginRequestModel = new LoginRequestModel();
 
   login() {
-    console.log(this.request);
+    this.api.login(this.request).subscribe(_ => {
+    });
   }
 
 }
