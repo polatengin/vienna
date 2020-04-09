@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ThemeModule } from './theme.module';
 import { AppComponent } from './app.component';
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
