@@ -8,9 +8,14 @@ export class LoginService {
   constructor(private router: Router) { }
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private back = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  get hasBack() {
+    return this.back.asObservable();
   }
 
   login(){
@@ -21,5 +26,9 @@ export class LoginService {
   logout() {
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
+  }
+
+  navigated() {
+    this.back.next(true);
   }
 }
