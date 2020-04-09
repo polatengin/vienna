@@ -13,8 +13,10 @@ export class AppComponent {
   }
 
   isLoggedIn$: Observable<boolean>;
+  hasBack$: Observable<boolean>;
 
   ngOnInit() {
     this.isLoggedIn$ = this.loginService.isLoggedIn;
+    this.hasBack$ = this.loginService.hasBack;
   }
 }
