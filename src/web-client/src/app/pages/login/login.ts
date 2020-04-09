@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LoginRequestModel } from '../../models/api-models';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,9 @@ import { LoginRequestModel } from '../../models/api-models';
   styleUrls: ['./login.scss']
 })
 export class LoginPageComponent {
+
+  constructor(private api: ApiService) {
+  }
 
   request: LoginRequestModel = new LoginRequestModel();
 
