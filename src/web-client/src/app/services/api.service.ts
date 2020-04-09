@@ -9,4 +9,8 @@ const BASE: string = 'http://localhost:3000/';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
+  login(request: LoginRequestModel): Observable<LoginResponseModel> {
+    return this.http.post<LoginResponseModel>(`${BASE}login`, request);
+  }
+
 }
