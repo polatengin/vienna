@@ -9,4 +9,6 @@ import { LoginRequestModel } from '../../models/api-models';
 })
 export class LoginPageComponent {
 
+  request: LoginRequestModel = new LoginRequestModel();
+
 }
