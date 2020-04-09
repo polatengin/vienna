@@ -4,5 +4,5 @@ export class LoginRequestModel {
 }
 
 export class LoginResponseModel {
-  result: boolean;
+  isActive: boolean;
 }
