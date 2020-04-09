@@ -25,7 +25,10 @@ app.post('/login', (req, res) => {
     password: req.body.password,
     isActive: true
   };
-  DoctorsCollection.findOne(query, (error, _) => {
+  let select = {
+    isActive: 1
+  };
+  DoctorsCollection.findOne(query, select, (error, _) => {
     if (error) {
       res.status(404).send(error);
     }
