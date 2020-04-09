@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ThemeModule } from './theme.module';
 import { AppComponent } from './app.component';
+
+import { LoginPageComponent } from './pages/login/login';
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent }
