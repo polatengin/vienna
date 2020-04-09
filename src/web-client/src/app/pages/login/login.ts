@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { LoginRequestModel } from '../../models/api-models';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.html',
