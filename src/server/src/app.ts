@@ -1,4 +1,5 @@
 import express from 'express';
+var cors = require('cors');
 import * as bodyparser from 'body-parser';
 
 import { MongoConnection, DoctorsCollection } from './db.service';
@@ -11,6 +12,7 @@ const db = new MongoConnection();
 
 db.init(process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD);
 
+app.use(cors({origin: 'http://localhost:4200'}));
 app.use(bodyparser.json());
 
 app.get('/', (req, res) => {
