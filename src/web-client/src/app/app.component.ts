@@ -6,7 +6,7 @@ import { LoginService } from './services/login.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: []
+  styles: ['.fill-space { flex: 1 1 auto; }']
 })
 export class AppComponent {
   constructor(private loginService: LoginService) {
