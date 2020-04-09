@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ThemeModule } from './theme.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+const routes: Routes = [
+];
 
 @NgModule({
   declarations: [
