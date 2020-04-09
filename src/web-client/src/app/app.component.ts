@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginService } from './services/login.service';
+import { LayoutService } from './services/layout.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,14 @@ import { LoginService } from './services/login.service';
   styles: ['.fill-space { flex: 1 1 auto; }']
 })
 export class AppComponent {
-  constructor(private loginService: LoginService) {
+  constructor(private layoutService: LayoutService) {
   }
 
   isLoggedIn$: Observable<boolean>;
   hasBack$: Observable<boolean>;
 
   ngOnInit() {
-    this.isLoggedIn$ = this.loginService.isLoggedIn;
-    this.hasBack$ = this.loginService.hasBack;
+    this.isLoggedIn$ = this.layoutService.isLoggedIn;
+    this.hasBack$ = this.layoutService.hasBack;
   }
 }
