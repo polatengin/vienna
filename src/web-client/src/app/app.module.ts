@@ -17,6 +17,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     ThemeModule
   ],
   providers: [],
