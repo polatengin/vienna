@@ -1,0 +1,33 @@
+<mat-card [class.mat-elevation-z0]="true">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-label>Respiration</mat-label>
+        <input type="text" matInput [(ngModel)]="request.respiration">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Pulse</mat-label>
+        <input type="text" matInput [(ngModel)]="request.pulse">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Temperature</mat-label>
+        <input type="text" matInput [(ngModel)]="request.temperature">
+      </mat-form-field>
+      <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label>Blood Pressure</mat-label>
+          <input type="text" matInput [(ngModel)]="request.bloodPressure1">
+        </mat-form-field></td>
+        <td><mat-form-field class="half-width">
+          <mat-label></mat-label>
+          <input type="text" matInput [(ngModel)]="request.bloodPressure2">
+        </mat-form-field></td>
+      </tr></table>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">
+        Save<mat-icon>chevron_right</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

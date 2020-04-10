@@ -15,3 +15,11 @@ export class NewPatientRequestModel {
   email: string;
   patientId: string;
 }
+
+export class VitalRequestModel{
+  respiration: string;
+  pulse: string;
+  temperature: string;
+  bloodPressure1: string;
+  bloodPressure2: string;
+}
