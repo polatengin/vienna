@@ -17,4 +17,8 @@ export class PatientListPageComponent {
     layout.hideBackButton();
   }
 
+  gotoNewPatientPage() {
+    this.router.navigate(['/new-patient']);
+  }
+
 }
