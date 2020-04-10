@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 import { Observable } from 'rxjs';
 
 import { LayoutService } from './services/layout.service';
@@ -9,7 +11,8 @@ import { LayoutService } from './services/layout.service';
   styles: ['.fill-space { flex: 1 1 auto; }']
 })
 export class AppComponent {
-  constructor(private layoutService: LayoutService) {
+
+  constructor(private layoutService: LayoutService, private location: Location) {
   }
 
   isLoggedIn$: Observable<boolean>;
@@ -21,4 +24,9 @@ export class AppComponent {
     this.hasBack$ = this.layoutService.hasBack;
     this.title$ = this.layoutService.title;
   }
+
+  goBack() {
+    this.location.back();
+  }
+
 }
