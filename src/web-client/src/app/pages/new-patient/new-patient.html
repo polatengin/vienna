@@ -8,6 +8,11 @@
       <mat-label>Phone Number</mat-label>
       <input type="tel" matInput [(ngModel)]="request.phoneNumber">
     </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Date of Birth</mat-label>
+      <input type="date" matInput [matDatepicker]="dateofBirthDatePicker" [(ngModel)]="request.dateofBirth">
+      <mat-datepicker #dateofBirthDatePicker></mat-datepicker>
+    </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
   </mat-card-actions>
