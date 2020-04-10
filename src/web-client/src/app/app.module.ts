@@ -14,18 +14,21 @@ import { AppComponent } from './app.component';
 
 import { LoginPageComponent } from './pages/login/login';
 import { PatientListPageComponent } from './pages/patient-list/patient-list';
+import { NewPatientPageComponent } from './pages/new-patient/new-patient';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'patient-list', component: PatientListPageComponent }
+  { path: 'patient-list', component: PatientListPageComponent },
+  { path: 'new-patient', component: NewPatientPageComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    PatientListPageComponent
+    PatientListPageComponent,
+    NewPatientPageComponent
   ],
   imports: [
     BrowserModule,
