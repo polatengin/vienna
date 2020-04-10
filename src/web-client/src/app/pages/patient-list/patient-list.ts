@@ -14,6 +14,7 @@ export class PatientListPageComponent {
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Patient List');
     layout.showMenu();
+    layout.hideBackButton();
   }
 
 }
