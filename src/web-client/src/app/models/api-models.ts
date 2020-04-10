@@ -6,3 +6,12 @@ export class LoginRequestModel {
 export class LoginResponseModel {
   isActive: boolean;
 }
+
+export class NewPatientRequestModel {
+  fullName: string;
+  phoneNumber: string;
+  dateofBirth: Date;
+  gender: string;
+  email: string;
+  patientId: string;
+}
