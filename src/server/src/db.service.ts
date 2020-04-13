@@ -15,8 +15,18 @@ const VitalSchema=new mongoose.Schema({
   bloodPressure2: String
 })
 
+const PatientSchema=new mongoose.Schema({
+  fullName: String,
+  phoneNumber: String,
+  dateofBirth: Date,
+  gender: String,
+  email: String,
+  patientId: String
+})
+
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema);
 export const VitalsCollection =mongoose.model("Vital",VitalSchema);
+export const PatientsCollection =mongoose.model("Patient",PatientSchema);
 
 export class MongoConnection {
 
