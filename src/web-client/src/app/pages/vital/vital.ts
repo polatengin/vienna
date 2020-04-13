@@ -22,6 +22,9 @@ export class VitalPageComponent {
   }
 
   save() {
+    this.api.save(this.request);
+    
+   
   }
 
 }
