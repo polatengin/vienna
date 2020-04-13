@@ -2,7 +2,7 @@ import express, { response } from 'express';
 var cors = require('cors');
 import * as bodyparser from 'body-parser';
 
-import { MongoConnection, DoctorsCollection,VitalsCollection } from './db.service';
+import { MongoConnection, DoctorsCollection,VitalsCollection,PatientsCollection } from './db.service';
 
 require('dotenv').config();
 
@@ -73,6 +73,27 @@ app.post('/vital', (req, res) => {
 
 });
 
+app.post('/new-patient', (req, res) => {
+  let patient = new PatientsCollection({
+   fullName: req.body.fullName,
+   phoneNumber: req.body.phoneNumber,
+   dateofBirth: req.body.dateofBirth,
+   gender: req.body.gender,
+   email: req.body.email,
+   patientId: req.body.patientId
+   });
+   patient.save((error,data)=>{
+     if(error){
+       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+     } else{
+       res.json(data);
+     }
+   });
+   
+   
+ 
+ });
+
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
 });
@@ -85,4 +106,9 @@ app.listen(port, () => {
 // DoctorsCollection.find({},(err,doctors)=>{
 //   if(err) throw err;
 //   console.log(doctors);
+// })
+
+// PatientsCollection.find({},(err,patients)=>{
+//   if(err) throw err;
+//   console.log(patients);
 // })
