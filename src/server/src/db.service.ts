@@ -7,7 +7,16 @@ const DoctorSchema = new mongoose.Schema({
   password: String,
   isActive: Boolean,
 });
+const VitalSchema=new mongoose.Schema({
+  respiration: String,
+  pulse: String,
+  temperature: String,
+  bloodPressure1: String,
+  bloodPressure2: String
+})
+
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema);
+export const VitalsCollection =mongoose.model("Vital",VitalSchema);
 
 export class MongoConnection {
 
