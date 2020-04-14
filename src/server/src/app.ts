@@ -94,6 +94,21 @@ app.post('/new-patient', (req, res) => {
  
  });
 
+ app.get('/patient-list', (req, res) => {
+  
+  PatientsCollection.find({}, (error, data) => {
+    if (error) {
+        res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    }
+    else {
+        res.json(data);
+    }
+});
+   
+   
+ 
+ });
+
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
 });
