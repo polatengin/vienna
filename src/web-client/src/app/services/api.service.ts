@@ -21,4 +21,8 @@ export class ApiService {
     this.http.post(`${BASE}new-patient`, request).subscribe((data) => {});
   }
 
+  getPatients(){
+   return this.http.get(`${BASE}patient-list`);
+  }
+
 }
