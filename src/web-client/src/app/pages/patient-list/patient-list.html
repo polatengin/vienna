@@ -9,5 +9,16 @@
 </mat-toolbar>
 <br />
 <mat-card>
-
+  <mat-list>
+    
+    <mat-list-item *ngFor="let patient of patients">
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <div mat-line>{{patient.fullName}}</div>
+      <div mat-line> {{patient.dateofBirth}} </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    
+    
+    
+  </mat-list>
 </mat-card>
