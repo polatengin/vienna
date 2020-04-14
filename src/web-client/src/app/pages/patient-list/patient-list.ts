@@ -10,15 +10,20 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./patient-list.scss']
 })
 export class PatientListPageComponent {
-
+patients;
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Patient List');
     layout.showMenu();
     layout.hideBackButton();
+    api.getPatients()
+    .subscribe(data => this.patients = data);
+    
   }
 
   gotoNewPatientPage() {
     this.router.navigate(['/new-patient']);
   }
+
+  
 
 }
