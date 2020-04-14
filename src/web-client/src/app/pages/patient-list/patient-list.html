@@ -3,6 +3,8 @@
     <input matInput>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
+  
+  
   <button mat-icon-button (click)="gotoNewPatientPage()">
     <mat-icon matSuffix>person_add</mat-icon>
   </button>
@@ -14,7 +16,10 @@
     <mat-list-item *ngFor="let patient of patients">
       <mat-icon mat-list-icon>account_circle</mat-icon>
       <div mat-line>{{patient.fullName}}</div>
-      <div mat-line> {{patient.dateofBirth}} </div>
+      <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
+      <button mat-icon-button>
+        <mat-icon matSuffix>chevron_right</mat-icon>
+      </button>
       <mat-divider></mat-divider>
     </mat-list-item>
     
