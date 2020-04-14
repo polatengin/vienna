@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   exports: [
@@ -20,7 +21,8 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatToolbarModule,
     MatNativeDateModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ]
 })
 export class ThemeModule { }
