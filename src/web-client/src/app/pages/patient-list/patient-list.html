@@ -1,7 +1,10 @@
 <mat-toolbar>
-  <mat-form-field class="full-width">
+  <!-- <mat-form-field class="full-width">
     <input matInput>
     <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field> -->
+  <mat-form-field class="full-width">
+    <input id="search"  matInput  placeholder="Search Patient" [(ngModel)]="filterText">
   </mat-form-field>
   
   
@@ -13,7 +16,7 @@
 <mat-card>
   <mat-list>
     
-    <mat-list-item *ngFor="let patient of patients">
+    <mat-list-item *ngFor="let patient of patients | searchFilter: filterText">
       <mat-icon mat-list-icon>account_circle</mat-icon>
       <div mat-line>{{patient.fullName}}</div>
       <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
