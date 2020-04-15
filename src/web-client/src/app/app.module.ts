@@ -16,6 +16,7 @@ import { LoginPageComponent } from './pages/login/login';
 import { PatientListPageComponent } from './pages/patient-list/patient-list';
 import { NewPatientPageComponent } from './pages/new-patient/new-patient';
 import { VitalPageComponent } from './pages/vital/vital';
+import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,7 +33,8 @@ const routes: Routes = [
     LoginPageComponent,
     PatientListPageComponent,
     NewPatientPageComponent,
-    VitalPageComponent
+    VitalPageComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
