@@ -54,13 +54,7 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/vital', (req, res) => {
- let vital = new VitalsCollection({
-  respiration: req.body.respiration,
-  pulse: req.body.pulse,
-  temperature: req.body.temperature,
-  bloodPressure1: req.body.bloodPressure1,
-  bloodPressure2: req.body.bloodPressure2
-  });
+ let vital = new VitalsCollection(req.body);
   vital.save((error,data)=>{
     if(error){
       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
@@ -74,14 +68,7 @@ app.post('/vital', (req, res) => {
 });
 
 app.post('/new-patient', (req, res) => {
-  let patient = new PatientsCollection({
-   fullName: req.body.fullName,
-   phoneNumber: req.body.phoneNumber,
-   dateofBirth: req.body.dateofBirth,
-   gender: req.body.gender,
-   email: req.body.email,
-   patientId: req.body.patientId
-   });
+  let patient = new PatientsCollection(req.body);
    patient.save((error,data)=>{
      if(error){
        res.send("Beklenmeyen bir hatayla karşılaşıldı...");
