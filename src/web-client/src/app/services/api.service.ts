@@ -34,4 +34,8 @@ export class ApiService {
    return this.http.get(`${BASE}patient-list`);
   }
 
+  getDoctors(){
+    return this.http.get(`${BASE}doctor-list`);
+   }
+
 }
