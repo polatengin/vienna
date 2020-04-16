@@ -22,7 +22,9 @@ filterText:any;
     
   }
 
-  
+  gotoNewDoctorPage() {
+    this.router.navigate(['/new-doctor']);
+  }
 
   
 
