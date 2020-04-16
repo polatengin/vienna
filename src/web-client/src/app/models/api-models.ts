@@ -14,6 +14,7 @@ export class NewPatientRequestModel {
   gender: string;
   email: string;
   patientId: string;
+  date: Date;
 }
 
 export class VitalRequestModel{
@@ -22,4 +23,5 @@ export class VitalRequestModel{
   temperature: string;
   bloodPressure1: string;
   bloodPressure2: string;
+  date: Date;
 }

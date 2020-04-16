@@ -13,7 +13,8 @@ const VitalSchema=new mongoose.Schema({
   pulse: String,
   temperature: String,
   bloodPressure1: String,
-  bloodPressure2: String
+  bloodPressure2: String,
+  date: Date
 },
 { timestamps: true });
 
@@ -23,7 +24,8 @@ const PatientSchema=new mongoose.Schema({
   dateofBirth: Date,
   gender: String,
   email: String,
-  patientId: String
+  patientId: String,
+  date: Date
 },
 { timestamps: true });
 
