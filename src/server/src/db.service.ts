@@ -4,8 +4,11 @@ import mongoose from 'mongoose';
 const DoctorSchema = new mongoose.Schema({
   fullName: String,
   phoneNumber: String,
+  dateofBirth: Date,
+  specialty: String,
   password: String,
   isActive: Boolean,
+  date: Date
 },
 { timestamps: true });
 const VitalSchema=new mongoose.Schema({
