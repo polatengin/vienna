@@ -25,6 +25,8 @@ export class NewDoctorPageComponent {
 
   }
 
-
+  save() {
+    this.api.saveDoctor(this.request);
+  }
 
 }
