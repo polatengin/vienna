@@ -20,13 +20,13 @@
       <mat-icon mat-list-icon>account_circle</mat-icon>
       <div mat-line>{{patient.fullName}}</div>
       <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
-      <button mat-icon-button  [matMenuTriggerFor]="menu">
-        <mat-icon matSuffix>chevron_right</mat-icon>
+      <button  mat-icon-button  [matMenuTriggerFor]="menu" >
+        <mat-icon matSuffix id={{patient.fullName}} (click)="getName($event.target)">chevron_right</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Patient Admission</button>
         <button mat-menu-item>Daily Assessment</button>
-        <button mat-menu-item>Vitals</button>
+        <button mat-menu-item (click)="gotoVitalPage()">Vitals</button>
         <button mat-menu-item>Medication</button>
       </mat-menu>
       <mat-divider></mat-divider>
