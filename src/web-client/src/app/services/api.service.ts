@@ -7,11 +7,15 @@ const BASE: string = 'http://localhost:3000/';
 
 @Injectable()
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  patientName;
+  
+  constructor(private http: HttpClient) {}
 
   login(request: LoginRequestModel): Observable<LoginResponseModel> {
     return this.http.post<LoginResponseModel>(`${BASE}login`, request);
   }
+
+  
 
   save(request:VitalRequestModel){
     this.http.post(`${BASE}vital`, request).subscribe((data) => {});

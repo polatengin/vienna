@@ -12,13 +12,14 @@ import { VitalRequestModel } from '../../models/api-models';
   styleUrls: ['./vital.scss']
 })
 export class VitalPageComponent {
-
+ 
   request: VitalRequestModel = new VitalRequestModel();
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
-    layout.updateTitle('Vital');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
+    
   }
 
   save() {
@@ -26,5 +27,7 @@ export class VitalPageComponent {
     
    
   }
+  
+  
 
 }
