@@ -11,7 +11,7 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class DoctorListPageComponent {
 doctors;
-
+filterText:any;
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Doctor List');
     layout.showMenu();
