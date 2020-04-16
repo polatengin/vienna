@@ -16,6 +16,7 @@ import { LoginPageComponent } from './pages/login/login';
 import { PatientListPageComponent } from './pages/patient-list/patient-list';
 import { NewPatientPageComponent } from './pages/new-patient/new-patient';
 import { VitalPageComponent } from './pages/vital/vital';
+import { NewDoctorPageComponent } from './pages/new-doctor/new-doctor';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'patient-list', component: PatientListPageComponent },
   { path: 'new-patient', component: NewPatientPageComponent },
-  { path: 'vital', component: VitalPageComponent }
+  { path: 'vital', component: VitalPageComponent },
+  { path: 'new-doctor', component: NewDoctorPageComponent },
 
 ];
 
@@ -34,6 +36,7 @@ const routes: Routes = [
     PatientListPageComponent,
     NewPatientPageComponent,
     VitalPageComponent,
+    NewDoctorPageComponent,
     SearchFilterPipe
   ],
   imports: [
