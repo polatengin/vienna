@@ -18,12 +18,25 @@ filterText:any;
     layout.hideBackButton();
     api.getPatients()
     .subscribe(data => this.patients = data);
+
     
   }
 
   gotoNewPatientPage() {
     this.router.navigate(['/new-patient']);
   }
+
+  gotoVitalPage() {
+    this.router.navigate(['/vital']);
+  }
+
+  getName(obj) {
+    this.api.patientName = obj.getAttribute('id');
+    console.log(this.api.patientName);
+    }
+
+    
+    
 
   
 
