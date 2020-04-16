@@ -81,6 +81,20 @@ app.post('/new-patient', (req, res) => {
  
  });
 
+ app.post('/new-doctor', (req, res) => {
+  let doctor = new DoctorsCollection(req.body);
+   doctor.save((error,data)=>{
+     if(error){
+       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+     } else{
+       res.json(data);
+     }
+   });
+   
+   
+ 
+ });
+
  app.get('/patient-list', (req, res) => {
   
   PatientsCollection.find({}, (error, data) => {
