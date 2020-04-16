@@ -109,6 +109,20 @@ app.post('/new-patient', (req, res) => {
    
  
  });
+ app.get('/doctor-list', (req, res) => {
+  
+  DoctorsCollection.find({}, (error, data) => {
+    if (error) {
+        res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    }
+    else {
+        res.json(data);
+    }
+});
+   
+   
+ 
+ });
 
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
