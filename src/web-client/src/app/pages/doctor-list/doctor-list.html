@@ -1,0 +1,30 @@
+<mat-toolbar>
+    <mat-form-field class="full-width">
+      <input id="search"  matInput  placeholder="Search Doctor">
+    </mat-form-field>
+    <button mat-icon-button>
+        <mat-icon matSuffix>person_add</mat-icon>
+    </button>
+</mat-toolbar>
+
+<br />
+<mat-card>
+  <mat-list>
+    
+    <mat-list-item *ngFor="let doctor of doctors">
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <div mat-line>{{doctor.fullName}}</div>
+      <div mat-line>{{doctor.specialty}}</div>
+      <button  mat-icon-button>
+        <mat-icon matSuffix>edit</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    
+    
+    
+  </mat-list>
+</mat-card>
+
+
+    
