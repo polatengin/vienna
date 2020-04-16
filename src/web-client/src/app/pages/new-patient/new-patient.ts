@@ -16,7 +16,7 @@ export class NewPatientPageComponent {
   request: NewPatientRequestModel = new NewPatientRequestModel();
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
-    layout.updateTitle('New Patient');
+    layout.updateTitle('Patient');
     layout.showMenu();
     layout.showBackButton();
   }
