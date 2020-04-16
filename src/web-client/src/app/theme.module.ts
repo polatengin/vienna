@@ -8,8 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatListModule} from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 @NgModule({
   exports: [
@@ -22,7 +25,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatToolbarModule,
     MatNativeDateModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    
   ]
 })
 export class ThemeModule { }
