@@ -2,7 +2,7 @@
     <mat-form-field class="full-width">
       <input id="search"  matInput  placeholder="Search Doctor" [(ngModel)]="filterText">
     </mat-form-field>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="gotoNewDoctorPage()">
         <mat-icon matSuffix>person_add</mat-icon>
     </button>
 </mat-toolbar>
