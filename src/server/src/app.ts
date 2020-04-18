@@ -65,19 +65,7 @@ app.post('/patient/add', (req, res) => {
  
  });
 
- app.post('/doctor/add', (req, res) => {
-  let doctor = new DoctorsCollection(req.body);
-   doctor.save((error,data)=>{
-     if(error){
-       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-     } else{
-       res.json(data);
-     }
-   });
-   
-   
  
- });
 
  app.get('/patient', (req, res) => {
   
@@ -108,7 +96,19 @@ app.post('/patient/add', (req, res) => {
  
  });
  
-
+ app.post('/doctor/add', (req, res) => {
+  let doctor = new DoctorsCollection(req.body);
+   doctor.save((error,data)=>{
+     if(error){
+       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+     } else{
+       res.json(data);
+     }
+   });
+   
+   
+ 
+ });
  
 
 
@@ -120,7 +120,14 @@ app.put('/doctor/edit/:id', function(req, res, next)  {
    });
 });
 
- 
+app.get('/doctor/edit/:id', function(req, res, next)  {
+  
+  DoctorsCollection.findById(req.params.id, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  
 
 app.listen(port, () => {
