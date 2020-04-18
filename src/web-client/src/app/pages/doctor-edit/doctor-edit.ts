@@ -25,6 +25,8 @@ export class DoctorEditPageComponent {
 
   }
 
-  
+  update() {
+    this.api.updateDoctor(this.request);
+  }
 
 }
