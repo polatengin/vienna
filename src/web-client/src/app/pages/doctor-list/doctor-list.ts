@@ -29,7 +29,7 @@ option = 'Tümü';
     });
 
     this.specialties=Object.values(this.specialty);
-
+    
     
   }
 
@@ -44,6 +44,11 @@ option = 'Tümü';
      this.doctors = this.copyDoctors.filter((item) => item.specialty === filterOption);
     }
    }
+
+   getId(obj) {
+    this.api.doctorId = obj.getAttribute('id');
+    this.router.navigate(['/doctor-list/'+this.api.doctorId]);
+    }
 
     
     
