@@ -123,6 +123,21 @@ app.post('/new-patient', (req, res) => {
    
  
  });
+ 
+
+ 
+
+
+app.put('/doctor-list/:id', function(req, res, next)  {
+  
+  DoctorsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
+ 
+ 
 
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
