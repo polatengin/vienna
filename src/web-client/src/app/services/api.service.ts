@@ -44,7 +44,10 @@ export class ApiService {
     return this.http.get(`${BASE}doctor`);
    }
    
-
+   getDoctor(){
+    return this.http.get(`${BASE}doctor/edit/`+ this.doctorId);
+   }
+   
 
 
 }
