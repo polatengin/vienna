@@ -2,21 +2,21 @@
     <mat-card-content>
       <mat-form-field class="full-width">
         <mat-label>FullName</mat-label>
-        <input type="text" matInput [(ngModel)]="request.fullName">
+        <input type="text" matInput    [(ngModel)]="doctor.fullName">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Phone Number</mat-label>
-        <input type="tel" matInput [(ngModel)]="request.phoneNumber">
+        <input type="tel" matInput  [(ngModel)]="doctor.phoneNumber">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Date of Birth</mat-label>
-        <input matInput [matDatepicker]="dateofBirthDatePicker" [(ngModel)]="request.dateofBirth">
+        <input matInput [matDatepicker]="dateofBirthDatePicker" [(ngModel)]="doctor.dateofBirth">
         <mat-datepicker-toggle matSuffix [for]="dateofBirthDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #dateofBirthDatePicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Specialty</mat-label>
-        <mat-select  [(ngModel)]="request.specialty">
+        <mat-select  [(ngModel)]="doctor.specialty">
             <mat-option>None</mat-option>
             <mat-option [value]="specialty" *ngFor="let specialty of specialties">
                 {{specialty}}
@@ -25,21 +25,22 @@
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Password</mat-label>
-        <input type="text" matInput [(ngModel)]="request.password">
+        <input type="text" matInput [(ngModel)]="doctor.password">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>IsActive</mat-label>
-        <mat-select [(ngModel)]="request.isActive">
+        <mat-select [(ngModel)]="doctor.isActive">
             <mat-option value="true">Yes</mat-option>
             <mat-option value="false">No</mat-option>
           </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Date</mat-label>
-        <input matInput [matDatepicker]="datePicker" [(ngModel)]="request.date">
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="doctor.date">
         <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #datePicker></mat-datepicker>
       </mat-form-field>
+      
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="update()">
@@ -47,3 +48,5 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  
+  
