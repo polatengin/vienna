@@ -18,6 +18,7 @@ import { NewPatientPageComponent } from './pages/new-patient/new-patient';
 import { VitalPageComponent } from './pages/vital/vital';
 import { NewDoctorPageComponent } from './pages/new-doctor/new-doctor';
 import { DoctorListPageComponent } from './pages/doctor-list/doctor-list';
+import { DoctorEditPageComponent } from './pages/doctor-edit/doctor-edit';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 
@@ -28,7 +29,9 @@ const routes: Routes = [
   { path: 'new-patient', component: NewPatientPageComponent },
   { path: 'vital', component: VitalPageComponent },
   { path: 'new-doctor', component: NewDoctorPageComponent },
-  { path: 'doctor-list',component: DoctorListPageComponent}
+  { path: 'doctor-list',component: DoctorListPageComponent},
+  { path: 'doctor-list/:id',component: DoctorEditPageComponent}
+  
 
 ];
 
@@ -41,6 +44,7 @@ const routes: Routes = [
     VitalPageComponent,
     NewDoctorPageComponent,
     DoctorListPageComponent,
+    DoctorEditPageComponent,
     SearchFilterPipe
   ],
   imports: [
