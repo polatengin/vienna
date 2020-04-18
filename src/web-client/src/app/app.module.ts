@@ -25,12 +25,12 @@ import { SearchFilterPipe } from './pipe/search-filter.pipe';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'patient-list', component: PatientListPageComponent },
-  { path: 'new-patient', component: NewPatientPageComponent },
-  { path: 'vital', component: VitalPageComponent },
-  { path: 'new-doctor', component: NewDoctorPageComponent },
-  { path: 'doctor-list',component: DoctorListPageComponent},
-  { path: 'doctor-list/:id',component: DoctorEditPageComponent}
+  { path: 'patient', component: PatientListPageComponent },
+  { path: 'patient/add', component: NewPatientPageComponent },
+  { path: 'vital/add', component: VitalPageComponent },
+  { path: 'doctor/add', component: NewDoctorPageComponent },
+  { path: 'doctor',component: DoctorListPageComponent},
+  { path: 'doctor/edit/:id',component: DoctorEditPageComponent}
   
 
 ];

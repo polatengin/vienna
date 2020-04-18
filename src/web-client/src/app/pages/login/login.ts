@@ -22,7 +22,7 @@ export class LoginPageComponent {
   login() {
     this.api.login(this.request).subscribe(_ => {
       if (_ && _.isActive) {
-        this.router.navigate(['/patient-list']);
+        this.router.navigate(['/patient']);
       }
     });
   }

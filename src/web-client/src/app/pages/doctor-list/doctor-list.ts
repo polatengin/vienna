@@ -34,7 +34,7 @@ option = 'Tümü';
   }
 
   gotoNewDoctorPage() {
-    this.router.navigate(['/new-doctor']);
+    this.router.navigate(['/doctor/add']);
   }
 
   specialtyFilter(filterOption: any) {
@@ -47,7 +47,7 @@ option = 'Tümü';
 
    getId(obj) {
     this.api.doctorId = obj.getAttribute('id');
-    this.router.navigate(['/doctor-list/'+this.api.doctorId]);
+    this.router.navigate(['/doctor/edit/'+this.api.doctorId]);
     }
 
     

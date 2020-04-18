@@ -20,28 +20,28 @@ export class ApiService {
   
 
   save(request:VitalRequestModel){
-    this.http.post(`${BASE}vital`, request).subscribe((data) => {});
+    this.http.post(`${BASE}vital/add`, request).subscribe((data) => {});
   }
 
   savePatient(request:NewPatientRequestModel){
-    this.http.post(`${BASE}new-patient`, request).subscribe((data) => {});
+    this.http.post(`${BASE}patient/add`, request).subscribe((data) => {});
   }
 
   saveDoctor(request:Doctor){
-    this.http.post(`${BASE}new-doctor`, request).subscribe((data) => {});
+    this.http.post(`${BASE}doctor/add`, request).subscribe((data) => {});
   }
 
   updateDoctor(request:Doctor){
-   return this.http.put(`${BASE}doctor-list/`+ this.doctorId, request).subscribe((data) => {});
+   return this.http.put(`${BASE}doctor/edit/`+ this.doctorId, request).subscribe((data) => {});
    
   }
 
   getPatients(){
-   return this.http.get(`${BASE}patient-list`);
+   return this.http.get(`${BASE}patient`);
   }
 
   getDoctors(){
-    return this.http.get(`${BASE}doctor-list`);
+    return this.http.get(`${BASE}doctor`);
    }
    
 

@@ -10,22 +10,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const db = new MongoConnection();
 
-// let vital=new VitalsCollection({
-//   respiration: "Normal",
-//   pulse: "65",
-//   temperature: "39",
-//   bloodPressure1: "11",
-//   bloodPressure2: "6"
-// });
-
-// vital.save((err,result)=>{
-//   if(err) throw err;
-//   console.log(result);
-// })
-
-
-
-
 
 db.init(process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD);
 
@@ -53,7 +37,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.post('/vital', (req, res) => {
+app.post('/vital/add', (req, res) => {
  let vital = new VitalsCollection(req.body);
   vital.save((error,data)=>{
     if(error){
@@ -67,7 +51,7 @@ app.post('/vital', (req, res) => {
 
 });
 
-app.post('/new-patient', (req, res) => {
+app.post('/patient/add', (req, res) => {
   let patient = new PatientsCollection(req.body);
    patient.save((error,data)=>{
      if(error){
@@ -81,7 +65,7 @@ app.post('/new-patient', (req, res) => {
  
  });
 
- app.post('/new-doctor', (req, res) => {
+ app.post('/doctor/add', (req, res) => {
   let doctor = new DoctorsCollection(req.body);
    doctor.save((error,data)=>{
      if(error){
@@ -95,7 +79,7 @@ app.post('/new-patient', (req, res) => {
  
  });
 
- app.get('/patient-list', (req, res) => {
+ app.get('/patient', (req, res) => {
   
   PatientsCollection.find({}, (error, data) => {
     if (error) {
@@ -109,7 +93,7 @@ app.post('/new-patient', (req, res) => {
    
  
  });
- app.get('/doctor-list', (req, res) => {
+ app.get('/doctor', (req, res) => {
   
   DoctorsCollection.find({}, (error, data) => {
     if (error) {
@@ -128,7 +112,7 @@ app.post('/new-patient', (req, res) => {
  
 
 
-app.put('/doctor-list/:id', function(req, res, next)  {
+app.put('/doctor/edit/:id', function(req, res, next)  {
   
   DoctorsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
     if(err) return next(err);
