@@ -27,7 +27,7 @@
       <div mat-line>{{doctor.fullName}}</div>
       <div mat-line>{{doctor.specialty}}</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix>edit</mat-icon>
+        <mat-icon matSuffix id={{doctor._id}} (click)="getId($event.target)">edit</mat-icon>
       </button>
       <mat-divider></mat-divider>
     </mat-list-item>
