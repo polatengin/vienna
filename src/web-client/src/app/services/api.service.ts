@@ -9,6 +9,7 @@ const BASE: string = 'http://localhost:3000/';
 @Injectable()
 export class ApiService {
   patientName;
+  doctorId;
   
   constructor(private http: HttpClient) {}
 
@@ -30,6 +31,11 @@ export class ApiService {
     this.http.post(`${BASE}new-doctor`, request).subscribe((data) => {});
   }
 
+  updateDoctor(request:Doctor){
+   return this.http.put(`${BASE}doctor-list/`+ this.doctorId, request).subscribe((data) => {});
+   
+  }
+
   getPatients(){
    return this.http.get(`${BASE}patient-list`);
   }
@@ -37,5 +43,8 @@ export class ApiService {
   getDoctors(){
     return this.http.get(`${BASE}doctor-list`);
    }
+   
+
+
 
 }
