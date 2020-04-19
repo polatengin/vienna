@@ -89,6 +89,14 @@ app.post('/patient/add', (req, res) => {
     res.json(post);
    });
 });
+
+app.get('/patient/edit/:id', function(req, res, next)  {
+  
+PatientsCollection.findOne({patientId:req.params.id}, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
  /**********  Doctor ***************/
  app.get('/doctor', (req, res) => {
   
