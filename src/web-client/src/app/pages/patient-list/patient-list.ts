@@ -32,7 +32,11 @@ filterText:any;
 
   getName(obj) {
     this.api.patientName = obj.getAttribute('id');
-    console.log(this.api.patientName);
+    }
+
+  getPatientId(obj) {
+    this.api.patientId = obj.getAttribute('id');
+    this.router.navigate(['/patient/edit/'+this.api.patientId]);
     }
 
     
