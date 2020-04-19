@@ -23,6 +23,9 @@ export class PatientEditPageComponent {
     layout.showBackButton();
   }
 
-  
+  update() {
+    this.api.updatePatient(this.request);
+    this.router.navigate(['/patient']);
+  }
 
 }
