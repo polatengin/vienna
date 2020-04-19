@@ -10,6 +10,7 @@ const BASE: string = 'http://localhost:3000/';
 export class ApiService {
   patientName;
   doctorId;
+  patientId;
   
   constructor(private http: HttpClient) {}
 
@@ -35,6 +36,11 @@ export class ApiService {
    return this.http.put(`${BASE}doctor/edit/`+ this.doctorId, request).subscribe((data) => {});
    
   }
+
+  updatePatient(request:NewPatientRequestModel){
+    return this.http.put(`${BASE}patient/edit/`+ this.patientId, request).subscribe((data) => {});
+    
+   }
 
   getPatients(){
    return this.http.get(`${BASE}patient`);
