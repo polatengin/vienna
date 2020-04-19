@@ -18,6 +18,7 @@ export class NewPatientRequestModel {
 }
 
 export class VitalRequestModel{
+  patientId: string;
   respiration: string;
   pulse: string;
   temperature: string;
