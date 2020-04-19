@@ -12,6 +12,7 @@ const DoctorSchema = new mongoose.Schema({
 },
 { timestamps: true });
 const VitalSchema=new mongoose.Schema({
+  patientId: String,
   respiration: String,
   pulse: String,
   temperature: String,
@@ -33,7 +34,7 @@ const PatientSchema=new mongoose.Schema({
 { timestamps: true });
 
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema,"Doctor");
-export const VitalsCollection =mongoose.model("PatientVital",VitalSchema);
+export const VitalsCollection =mongoose.model("PatientVital",VitalSchema, "PatientVital");
 export const PatientsCollection =mongoose.model("Patient",PatientSchema,"Patient");
 
 export class MongoConnection {
