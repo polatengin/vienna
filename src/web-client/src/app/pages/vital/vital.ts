@@ -14,12 +14,16 @@ import { VitalRequestModel } from '../../models/api-models';
 export class VitalPageComponent {
  
   request: VitalRequestModel = new VitalRequestModel();
+  patientId;
+
+
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
-    
+    this.patientId=this.api.patientId
+    this.request.patientId=this.patientId;
   }
 
   save() {
