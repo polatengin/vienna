@@ -84,7 +84,7 @@ app.post('/patient/add', (req, res) => {
  });
  app.put('/patient/edit/:id', function(req, res, next)  {
   
-  PatientsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+  PatientsCollection.findOneAndUpdate({patientId:req.params.id}, req.body, function(err,post) {
     if(err) return next(err);
     res.json(post);
    });
