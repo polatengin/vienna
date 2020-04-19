@@ -15,16 +15,18 @@ import { NewPatientRequestModel } from '../../models/api-models';
 })
 export class PatientEditPageComponent {
 
-    request: NewPatientRequestModel = new NewPatientRequestModel();
+  patient;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Edit Patient');
     layout.showMenu();
     layout.showBackButton();
+    this.api.getPatient()
+    .subscribe(data => this.patient = data);
   }
 
   update() {
-    this.api.updatePatient(this.request);
+    this.api.updatePatient(this.patient);
     this.router.navigate(['/patient']);
   }
 
