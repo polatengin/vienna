@@ -51,6 +51,7 @@ app.post('/vital/add', (req, res) => {
 
 });
 
+/***************   Patient **************** */
 app.post('/patient/add', (req, res) => {
   let patient = new PatientsCollection(req.body);
    patient.save((error,data)=>{
@@ -81,6 +82,14 @@ app.post('/patient/add', (req, res) => {
    
  
  });
+ app.put('/patient/edit/:id', function(req, res, next)  {
+  
+  PatientsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+ /**********  Doctor ***************/
  app.get('/doctor', (req, res) => {
   
   DoctorsCollection.find({}, (error, data) => {
@@ -128,7 +137,7 @@ app.get('/doctor/edit/:id', function(req, res, next)  {
    });
 });
 
- 
+ /**************************************************************** */
 
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
