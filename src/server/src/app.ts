@@ -227,6 +227,14 @@ app.get('/dailyassessment/edit/:id', function(req, res, next)  {
    });
 });
 
+app.put('/dailyassessment/edit/:id', function(req, res, next)  {
+  
+  DailyAssessmentsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
