@@ -35,4 +35,5 @@ export class DailyAssessmentRequestModel{
   conscious: string;
   nutrition: string;
   respiration: string;
+  date: Date;
 }
