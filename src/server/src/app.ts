@@ -187,6 +187,14 @@ app.get('/doctor/edit/:id', function(req, res, next)  {
    });
 });
 
+app.delete('/doctor/delete/:id', function(req, res, next)  {
+  
+  DoctorsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 app.listen(port, () => {
