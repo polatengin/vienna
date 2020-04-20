@@ -28,6 +28,7 @@ export class VitalRequestModel{
 }
 
 export class DailyAssessmentRequestModel{
+  patientId: string;
   firstTemperature: string;
   secondTemperature: string;
   thirdTemperature: string;
