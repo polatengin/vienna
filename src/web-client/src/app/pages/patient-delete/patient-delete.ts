@@ -24,6 +24,9 @@ export class PatientDeletePageComponent {
     
   }
 
-  
+  delete() {
+    this.api.deletePatient();
+    this.router.navigate(['/patient']);
+  }
 
 }
