@@ -29,6 +29,9 @@
       <button  mat-icon-button>
         <mat-icon matSuffix id={{doctor._id}} (click)="getId($event.target)">edit</mat-icon>
       </button>
+      <button  mat-icon-button>
+        <mat-icon matSuffix id={{doctor._id}} (click)="getDoctorId($event.target)">delete</mat-icon>
+      </button>
       <mat-divider></mat-divider>
     </mat-list-item>
     
