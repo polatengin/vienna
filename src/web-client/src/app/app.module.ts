@@ -22,6 +22,7 @@ import { DoctorEditPageComponent } from './pages/doctor-edit/doctor-edit';
 import { PatientEditPageComponent } from './pages/patient-edit/patient-edit';
 import { VitalListPageComponent } from './pages/vital-list/vital-list';
 import { VitalEditPageComponent } from './pages/vital-edit/vital-edit';
+import { VitalDeletePageComponent } from './pages/vital-delete/vital-delete';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: 'doctor/edit/:id',component: DoctorEditPageComponent},
   { path: 'patient/edit/:id',component: PatientEditPageComponent},
   { path: 'vital/:id',component: VitalListPageComponent},
-  { path: 'vital/edit/:id',component: VitalEditPageComponent}
+  { path: 'vital/edit/:id',component: VitalEditPageComponent},
+  { path: 'vital/delete/:id',component: VitalDeletePageComponent}
   
 
 ];
@@ -54,6 +56,7 @@ const routes: Routes = [
     PatientEditPageComponent,
     VitalListPageComponent,
     VitalEditPageComponent,
+    VitalDeletePageComponent,
     SearchFilterPipe
   ],
   imports: [
