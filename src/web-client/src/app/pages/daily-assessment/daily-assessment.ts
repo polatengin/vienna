@@ -26,6 +26,7 @@ export class DailyAssessmentPageComponent {
 
   save(){
       this.api.saveDailyAssessment(this.request);
+      this.router.navigate(['/dailyassessment/'+this.api.patientId]);
   }
 
 }
