@@ -57,6 +57,10 @@ export class ApiService {
    getPatient(){
     return this.http.get(`${BASE}patient/edit/`+ this.patientId);
    }
+
+   getVitals(){
+    return this.http.get(`${BASE}vital/`+ this.patientId);
+   }
    
 
 
