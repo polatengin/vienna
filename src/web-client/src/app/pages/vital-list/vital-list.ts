@@ -14,14 +14,16 @@ vitals;
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Vital List');
     layout.showMenu();
-    layout.hideBackButton();
+    layout.showBackButton();
     api.getVitals()
     .subscribe(data => this.vitals = data);
 
     
   }
 
-  
+  gotoAddVitalPage(){
+    this.router.navigate(['/vital/add']);
+  }
 
   
 
