@@ -44,7 +44,7 @@ export class ApiService {
    }
 
    updateVital(request:VitalRequestModel){
-    return this.http.put(`${BASE}patient/edit/`+ this.vitalId, request).subscribe((data) => {});
+    return this.http.put(`${BASE}vital/edit/`+ this.vitalId, request).subscribe((data) => {});
     
    }
 
