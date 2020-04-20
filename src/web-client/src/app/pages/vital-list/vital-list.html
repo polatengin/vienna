@@ -1,0 +1,31 @@
+
+<mat-toolbar>
+    <button mat-icon-button color="primary">
+        <mat-icon matSuffix>add</mat-icon> Add Vital
+    </button>
+</mat-toolbar>
+
+<br />
+<mat-card>
+  <mat-list>
+    
+    <mat-list-item *ngFor="let vital of vitals">
+      
+      <div mat-line>{{vital.date | date}}</div>
+      <div mat-line>{{vital.patientId}}</div>
+      <button  mat-icon-button>
+        <mat-icon matSuffix>edit</mat-icon>
+      </button>
+      <button  mat-icon-button>
+        <mat-icon matSuffix>delete</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    
+    
+    
+  </mat-list>
+</mat-card>
+
+
+    
