@@ -20,6 +20,7 @@ import { NewDoctorPageComponent } from './pages/new-doctor/new-doctor';
 import { DoctorListPageComponent } from './pages/doctor-list/doctor-list';
 import { DoctorEditPageComponent } from './pages/doctor-edit/doctor-edit';
 import { PatientEditPageComponent } from './pages/patient-edit/patient-edit';
+import { VitalListPageComponent } from './pages/vital-list/vital-list';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'doctor/add', component: NewDoctorPageComponent },
   { path: 'doctor',component: DoctorListPageComponent},
   { path: 'doctor/edit/:id',component: DoctorEditPageComponent},
-  { path: 'patient/edit/:id',component: PatientEditPageComponent}
+  { path: 'patient/edit/:id',component: PatientEditPageComponent},
+  { path: 'vital/:id',component: VitalListPageComponent}
   
 
 ];
@@ -48,6 +50,7 @@ const routes: Routes = [
     DoctorListPageComponent,
     DoctorEditPageComponent,
     PatientEditPageComponent,
+    VitalListPageComponent,
     SearchFilterPipe
   ],
   imports: [
