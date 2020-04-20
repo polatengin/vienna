@@ -211,6 +211,14 @@ app.post('/dailyassessment/add', (req, res) => {
  
  });
 
+ app.get('/dailyassessment/:id', function(req, res, next)  {
+  
+  DailyAssessmentsCollection.find({patientId:req.params.id}, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
