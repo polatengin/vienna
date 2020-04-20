@@ -48,8 +48,13 @@ export class ApiService {
     
    }
 
-   deleteVital(id:number){
+   deleteVital(){
     return this.http.delete(`${BASE}vital/delete/`+ this.vitalId).subscribe((data) => {});
+    
+   }
+
+   deletePatient(){
+    return this.http.delete(`${BASE}patient/delete/`+ this.patientId).subscribe((data) => {});
     
    }
 
