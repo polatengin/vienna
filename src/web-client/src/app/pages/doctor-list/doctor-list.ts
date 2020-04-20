@@ -50,7 +50,10 @@ option = 'Tümü';
     this.router.navigate(['/doctor/edit/'+this.api.doctorId]);
     }
 
-    
+    getDoctorId(obj){
+      this.api.doctorId = obj.getAttribute('id');
+      this.router.navigate(['/doctor/delete/'+this.api.doctorId]);
+    }
     
 
   
