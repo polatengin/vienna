@@ -83,6 +83,10 @@ export class ApiService {
     return this.http.get(`${BASE}patient/edit/`+ this.patientId);
    }
 
+   getDailyAssessments(){
+    return this.http.get(`${BASE}dailyassessment/`+ this.patientId);
+   }
+
    getVitals(){
     return this.http.get(`${BASE}vital/`+ this.patientId);
    }
@@ -90,6 +94,7 @@ export class ApiService {
    getVital(){
     return this.http.get(`${BASE}vital/edit/`+ this.vitalId);
    }
+   
    
 
 
