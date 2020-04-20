@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <button mat-icon-button color="primary" (click)="gotoAddDailyAssessmentPage()">
+        <mat-icon matSuffix>add</mat-icon> Add Daily Assessment
+    </button>
+</mat-toolbar>
+
+<br />
+<mat-card>
+  <mat-list>
+    
+    <mat-list-item *ngFor="let dailyAssessment of dailyAssessments">
+      
+      <div mat-line>{{dailyAssessment.date | date}}</div>
+      <div mat-line>{{dailyAssessment.patientId}}</div>
+      <button  mat-icon-button>
+        <mat-icon matSuffix>edit</mat-icon>
+      </button>
+      <button  mat-icon-button>
+        <mat-icon matSuffix>delete</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    
+    
+    
+  </mat-list>
+</mat-card>
+
