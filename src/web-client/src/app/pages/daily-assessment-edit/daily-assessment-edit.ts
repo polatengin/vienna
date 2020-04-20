@@ -26,6 +26,10 @@ export class DailyAssessmentEditPageComponent {
     
   }
 
+  update() {
+    this.api.updateDailyAssessment(this.dailyAssessment);
+    this.router.navigate(['/dailyassessment/'+this.api.patientId]);
+  }
   
 
 }
