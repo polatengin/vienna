@@ -37,6 +37,8 @@ app.post('/login', (req, res) => {
   });
 });
 
+/*************** Vital **********************/
+
 app.post('/vital/add', (req, res) => {
  let vital = new VitalsCollection(req.body);
   vital.save((error,data)=>{
@@ -50,6 +52,15 @@ app.post('/vital/add', (req, res) => {
   
 
 });
+
+app.get('/vital/:id', function(req, res, next)  {
+  
+  VitalsCollection.find({patientId:req.params.id}, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
 
 /***************   Patient **************** */
 app.post('/patient/add', (req, res) => {
@@ -165,3 +176,4 @@ app.listen(port, () => {
 //   if(err) throw err;
 //   console.log(patients);
 // })
+
