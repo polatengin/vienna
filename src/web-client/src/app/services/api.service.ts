@@ -63,6 +63,11 @@ export class ApiService {
     
    }
 
+   deleteDailyAssessment(){
+    return this.http.delete(`${BASE}dailyassessment/delete/`+ this.dailyAssessmentId).subscribe((data) => {});
+    
+   }
+
    deletePatient(){
     return this.http.delete(`${BASE}patient/delete/`+ this.patientId).subscribe((data) => {});
     
