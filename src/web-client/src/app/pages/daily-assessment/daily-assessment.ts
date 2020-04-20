@@ -14,14 +14,19 @@ import { DailyAssessmentRequestModel } from '../../models/api-models';
 export class DailyAssessmentPageComponent {
 
   request: DailyAssessmentRequestModel = new DailyAssessmentRequestModel();
+  patientId;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Daily Assessment');
     layout.showMenu();
     layout.showBackButton();
+    this.patientId=this.api.patientId
+    this.request.patientId=this.patientId;
   }
 
-  
+  save(){
+      this.api.saveDailyAssessment(this.request);
+  }
 
 }
 
