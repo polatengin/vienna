@@ -58,6 +58,11 @@ export class ApiService {
     
    }
 
+   deleteDoctor(){
+    return this.http.delete(`${BASE}doctor/delete/`+ this.doctorId).subscribe((data) => {});
+    
+   }
+
   getPatients(){
    return this.http.get(`${BASE}patient`);
   }
