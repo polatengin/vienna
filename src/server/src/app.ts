@@ -77,6 +77,14 @@ app.get('/vital/edit/:id', function(req, res, next)  {
    });
 });
 
+app.delete('/vital/delete/:id', function(req, res, next)  {
+  
+  VitalsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
 /***************   Patient **************** */
 app.post('/patient/add', (req, res) => {
   let patient = new PatientsCollection(req.body);
