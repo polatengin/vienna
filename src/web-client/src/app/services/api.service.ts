@@ -12,6 +12,7 @@ export class ApiService {
   doctorId;
   patientId;
   vitalId;
+  dailyAssessmentId;
   
   constructor(private http: HttpClient) {}
 
@@ -93,6 +94,10 @@ export class ApiService {
 
    getVital(){
     return this.http.get(`${BASE}vital/edit/`+ this.vitalId);
+   }
+
+   getDailyAssessment(){
+    return this.http.get(`${BASE}dailyassessment/edit/`+ this.dailyAssessmentId);
    }
    
    
