@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequestModel, LoginResponseModel,VitalRequestModel,NewPatientRequestModel } from '../models/api-models';
+import { LoginRequestModel, LoginResponseModel,VitalRequestModel,NewPatientRequestModel,DailyAssessmentRequestModel } from '../models/api-models';
 import { Doctor } from '../models/doctor';
 import { Observable } from 'rxjs';
 
@@ -31,6 +31,10 @@ export class ApiService {
 
   saveDoctor(request:Doctor){
     this.http.post(`${BASE}doctor/add`, request).subscribe((data) => {});
+  }
+
+  saveDailyAssessment(request:DailyAssessmentRequestModel){
+    this.http.post(`${BASE}dailyassessment/add`, request).subscribe((data) => {});
   }
 
   updateDoctor(request:Doctor){
