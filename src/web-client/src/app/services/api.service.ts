@@ -53,6 +53,11 @@ export class ApiService {
     
    }
 
+   updateDailyAssessment(request:DailyAssessmentRequestModel){
+    return this.http.put(`${BASE}dailyassessment/edit/`+ this.dailyAssessmentId, request).subscribe((data) => {});
+    
+   }
+
    deleteVital(){
     return this.http.delete(`${BASE}vital/delete/`+ this.vitalId).subscribe((data) => {});
     
