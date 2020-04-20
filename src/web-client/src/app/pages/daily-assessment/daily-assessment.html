@@ -1,0 +1,50 @@
+<mat-card [class.mat-elevation-z0]="true">
+    <mat-card-content>
+      
+      <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field appearance="fill" class="third-width">
+          <mat-label>Temperature 1</mat-label>
+          <input type="text" matInput [(ngModel)]="request.firstTemperature">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="fill" class="third-width">
+          <mat-label>Temperature 2</mat-label>
+          <input type="text" matInput [(ngModel)]="request.secondTemperature">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="fill" class="third-width">
+            <mat-label>Temperature 3</mat-label>
+            <input type="text" matInput [(ngModel)]="request.thirdTemperature">
+          </mat-form-field></td>
+      </tr></table>
+
+      <mat-form-field class="full-width">
+        <mat-label>Conscious</mat-label>
+        <mat-select [(ngModel)]="request.conscious" name="conscious">
+          <mat-option value="Open">Open</mat-option>
+          <mat-option value="Closed">Closed</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Nutrition</mat-label>
+        <mat-select [(ngModel)]="request.nutrition" name="nutrition">
+          <mat-option value="Diet">Diet</mat-option>
+          <mat-option value="Food">Food</mat-option>
+          <mat-option value="Nothing">Nothing</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Respiration</mat-label>
+        <mat-select [(ngModel)]="request.respiration" name="respiration">
+          <mat-option value="Deep">Deep</mat-option>
+          <mat-option value="Normal">Normal</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">
+        Save<mat-icon>chevron_right</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  
