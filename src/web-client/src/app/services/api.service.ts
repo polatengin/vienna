@@ -11,6 +11,7 @@ export class ApiService {
   patientName;
   doctorId;
   patientId;
+  vitalId;
   
   constructor(private http: HttpClient) {}
 
@@ -42,6 +43,11 @@ export class ApiService {
     
    }
 
+   updateVital(request:VitalRequestModel){
+    return this.http.put(`${BASE}patient/edit/`+ this.vitalId, request).subscribe((data) => {});
+    
+   }
+
   getPatients(){
    return this.http.get(`${BASE}patient`);
   }
@@ -60,6 +66,10 @@ export class ApiService {
 
    getVitals(){
     return this.http.get(`${BASE}vital/`+ this.patientId);
+   }
+
+   getVital(){
+    return this.http.get(`${BASE}vital/edit/`+ this.vitalId);
    }
    
 
