@@ -131,6 +131,14 @@ PatientsCollection.findOne({patientId:req.params.id}, function(err,post) {
     res.json(post);
    });
 });
+
+app.delete('/patient/delete/:id', function(req, res, next)  {
+  
+  PatientsCollection.findOneAndRemove({patientId:req.params.id}, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
  /**********  Doctor ***************/
  app.get('/doctor', (req, res) => {
   
