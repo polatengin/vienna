@@ -25,6 +25,9 @@ vitals;
     this.router.navigate(['/vital/add']);
   }
 
-  
+  getVitalId(obj) {
+    this.api.vitalId = obj.getAttribute('id');
+    this.router.navigate(['/vital/edit/'+this.api.vitalId]);
+    }
 
 }
