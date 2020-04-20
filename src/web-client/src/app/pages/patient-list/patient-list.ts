@@ -31,7 +31,7 @@ filterText:any;
   }
 
   gotoDailyAssessmentPage() {
-    this.router.navigate(['/dailyassessment/add']);
+    this.router.navigate(['/dailyassessment/'+this.api.patientId]);
   }
 
   getName(obj) {
