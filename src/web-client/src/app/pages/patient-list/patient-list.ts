@@ -23,7 +23,7 @@ filterText:any;
   }
 
   gotoNewPatientPage() {
-    this.router.navigate(['/new-patient']);
+    this.router.navigate(['/patient/add']);
   }
 
   gotoVitalPage() {
@@ -42,6 +42,11 @@ filterText:any;
     
     getPatientId2(obj){
       this.api.patientId = obj.getAttribute('id');
+    }
+
+    getPatientId3(obj){
+      this.api.patientId = obj.getAttribute('id');
+      this.router.navigate(['/patient/delete/'+this.api.patientId]);
     }
 
   
