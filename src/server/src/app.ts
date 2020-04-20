@@ -219,6 +219,14 @@ app.post('/dailyassessment/add', (req, res) => {
    });
 });
 
+app.get('/dailyassessment/edit/:id', function(req, res, next)  {
+  
+  DailyAssessmentsCollection.findById(req.params.id, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
