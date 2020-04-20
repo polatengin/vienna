@@ -2,34 +2,34 @@
     <mat-card-content>
       <mat-form-field class="full-width">
         <mat-label>Patient Id</mat-label>
-        <input type="text" matInput [(ngModel)]="request.patientId" disabled>
+        <input type="text" matInput [(ngModel)]="vital.patientId" disabled>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Respiration</mat-label>
-        <input type="text" matInput [(ngModel)]="request.respiration">
+        <input type="text" matInput [(ngModel)]="vital.respiration">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Pulse</mat-label>
-        <input type="text" matInput [(ngModel)]="request.pulse">
+        <input type="text" matInput [(ngModel)]="vital.pulse">
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Temperature</mat-label>
-        <input type="text" matInput [(ngModel)]="request.temperature">
+        <input type="text" matInput [(ngModel)]="vital.temperature">
       </mat-form-field>
       <table class="full-width" cellspacing="0"><tr>
         <td><mat-form-field class="half-width">
           <mat-label>Blood Pressure</mat-label>
-          <input type="text" matInput [(ngModel)]="request.bloodPressure1">
+          <input type="text" matInput [(ngModel)]="vital.bloodPressure1">
         </mat-form-field></td>
         <td><mat-form-field class="half-width">
           <mat-label></mat-label>
-          <input type="text" matInput [(ngModel)]="request.bloodPressure2">
+          <input type="text" matInput [(ngModel)]="vital.bloodPressure2">
         </mat-form-field></td>
       </tr></table>
 
       <mat-form-field class="full-width">
         <mat-label>Date</mat-label>
-        <input matInput [matDatepicker]="datePicker" [(ngModel)]="request.date">
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="vital.date">
         <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #datePicker></mat-datepicker>
       </mat-form-field>
