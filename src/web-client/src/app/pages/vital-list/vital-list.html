@@ -14,7 +14,7 @@
       <div mat-line>{{vital.date | date}}</div>
       <div mat-line>{{vital.patientId}}</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix>edit</mat-icon>
+        <mat-icon matSuffix id={{vital._id}} (click)="getVitalId($event.target)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
         <mat-icon matSuffix>delete</mat-icon>
