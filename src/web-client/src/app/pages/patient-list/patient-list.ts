@@ -27,7 +27,7 @@ filterText:any;
   }
 
   gotoVitalPage() {
-    this.router.navigate(['/vital/add']);
+    this.router.navigate(['/vital/'+this.api.patientId]);
   }
 
   getName(obj) {
