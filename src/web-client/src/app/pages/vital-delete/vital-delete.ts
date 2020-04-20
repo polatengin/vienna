@@ -26,7 +26,7 @@ export class VitalDeletePageComponent {
   }
 
   delete() {
-    this.api.deleteVital(this.api.vitalId);
+    this.api.deleteVital();
     this.router.navigate(['/vital/'+this.api.patientId]);
   }
 
