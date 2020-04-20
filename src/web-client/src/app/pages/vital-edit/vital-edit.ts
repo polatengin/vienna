@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { VitalRequestModel } from '../../models/api-models';
 
 
 
@@ -15,15 +14,17 @@ import { VitalRequestModel } from '../../models/api-models';
 })
 export class VitalEditPageComponent {
 
-    request: VitalRequestModel = new VitalRequestModel();
+  vital;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Edit Vital');
     layout.showMenu();
     layout.showBackButton();
+    this.api.getVital()
+    .subscribe(data => this.vital = data);
     
   }
 
- 
+  
 
 }
