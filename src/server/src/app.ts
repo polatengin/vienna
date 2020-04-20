@@ -61,6 +61,21 @@ app.get('/vital/:id', function(req, res, next)  {
    });
 });
 
+app.put('/vital/edit/:id', function(req, res, next)  {
+  
+  VitalsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
+app.get('/vital/edit/:id', function(req, res, next)  {
+  
+  VitalsCollection.findById(req.params.id, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
 
 /***************   Patient **************** */
 app.post('/patient/add', (req, res) => {
