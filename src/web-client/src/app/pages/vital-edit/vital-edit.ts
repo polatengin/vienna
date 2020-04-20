@@ -25,6 +25,9 @@ export class VitalEditPageComponent {
     
   }
 
-  
+  update() {
+    this.api.updateVital(this.vital);
+    this.router.navigate(['/vital/'+this.api.patientId]);
+  }
 
 }
