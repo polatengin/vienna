@@ -1,6 +1,9 @@
 <mat-card [class.mat-elevation-z0]="true">
     <mat-card-content>
-      
+        <mat-form-field class="full-width">
+            <mat-label>Patient Id</mat-label>
+            <input type="text" matInput [(ngModel)]="request.patientId" disabled>
+          </mat-form-field>
       <table class="full-width" cellspacing="0"><tr>
         <td><mat-form-field appearance="fill" class="third-width">
           <mat-label>Temperature 1</mat-label>
