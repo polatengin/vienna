@@ -26,3 +26,12 @@ export class VitalRequestModel{
   bloodPressure2: string;
   date: Date;
 }
+
+export class DailyAssessmentRequestModel{
+  firstTemperature: string;
+  secondTemperature: string;
+  thirdTemperature: string;
+  conscious: string;
+  nutrition: string;
+  respiration: string;
+}
