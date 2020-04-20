@@ -41,11 +41,17 @@
           <mat-option value="Normal">Normal</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="request.date">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
 
       
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary" (click)="save()">
         Save<mat-icon>chevron_right</mat-icon>
       </button>
     </mat-card-actions>
