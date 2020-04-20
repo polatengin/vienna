@@ -17,7 +17,7 @@
         <mat-icon matSuffix id={{vital._id}} (click)="getVitalId($event.target)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
-        <mat-icon matSuffix>delete</mat-icon>
+        <mat-icon matSuffix id={{vital._id}} (click)="getVitalId2($event.target)">delete</mat-icon>
       </button>
       <mat-divider></mat-divider>
     </mat-list-item>
