@@ -30,6 +30,10 @@ filterText:any;
     this.router.navigate(['/vital/'+this.api.patientId]);
   }
 
+  gotoDailyAssessmentPage() {
+    this.router.navigate(['/dailyassessment/add']);
+  }
+
   getName(obj) {
     this.api.patientName = obj.getAttribute('id');
     }
