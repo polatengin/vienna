@@ -235,6 +235,14 @@ app.put('/dailyassessment/edit/:id', function(req, res, next)  {
    });
 });
 
+app.delete('/dailyassessment/delete/:id', function(req, res, next)  {
+  
+  DailyAssessmentsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
