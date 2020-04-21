@@ -28,6 +28,7 @@ export class MedicationAddPageComponent {
 
   save() {
     this.api.saveMedication(this.request);
+    this.router.navigate(['/medication/'+ this.api.patientId]);
     
    
   }
