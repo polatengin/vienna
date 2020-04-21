@@ -32,4 +32,9 @@ medications;
     this.router.navigate(['/medication/edit/'+this.api.medicationId]);
     }
 
+    gotoDeletePage(obj){
+      this.api.medicationId = obj.getAttribute('id');
+      this.router.navigate(['/medication/delete/'+this.api.medicationId]);
+    }
+
 }
