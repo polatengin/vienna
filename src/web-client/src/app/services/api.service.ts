@@ -63,6 +63,11 @@ export class ApiService {
     
    }
 
+   updateMedication(request:MedicationRequestModel){
+    return this.http.put(`${BASE}medication/edit/`+ this.medicationId, request).subscribe((data) => {});
+    
+   }
+
    deleteVital(){
     return this.http.delete(`${BASE}vital/delete/`+ this.vitalId).subscribe((data) => {});
     
