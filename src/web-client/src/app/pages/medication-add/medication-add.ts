@@ -26,7 +26,11 @@ export class MedicationAddPageComponent {
     this.request.patientId=this.patientId;
   }
 
-  
+  save() {
+    this.api.saveMedication(this.request);
+    
+   
+  }
   
   
 
