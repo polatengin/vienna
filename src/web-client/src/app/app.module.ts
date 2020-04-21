@@ -30,6 +30,7 @@ import { DailyAssessmentListPageComponent } from './pages/daily-assessment-list/
 import { DailyAssessmentEditPageComponent } from './pages/daily-assessment-edit/daily-assessment-edit';
 import { DailyAssessmentDeletePageComponent } from './pages/daily-assessment-delete/daily-assessment-delete';
 import { MedicationAddPageComponent } from './pages/medication-add/medication-add';
+import { MedicationListPageComponent } from './pages/medication-list/medication-list';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'dailyassessment/edit/:id',component: DailyAssessmentEditPageComponent},
   { path: 'dailyassessment/delete/:id',component: DailyAssessmentDeletePageComponent},
   { path: 'medication/add',component: MedicationAddPageComponent},
+  { path: 'medication/:id',component: MedicationListPageComponent}
   
 
 ];
@@ -78,6 +80,7 @@ const routes: Routes = [
     DailyAssessmentEditPageComponent,
     DailyAssessmentDeletePageComponent,
     MedicationAddPageComponent,
+    MedicationListPageComponent,
     SearchFilterPipe
   ],
   imports: [
