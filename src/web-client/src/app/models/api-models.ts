@@ -37,3 +37,12 @@ export class DailyAssessmentRequestModel{
   respiration: string;
   date: Date;
 }
+
+export class MedicationRequestModel{
+  patientId: string;
+  medicine: string;
+  dose: string;
+  date: Date;
+  
+}
+
