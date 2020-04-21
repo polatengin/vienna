@@ -31,7 +31,7 @@
             </td>
             <td>
                 <button  mat-icon-button>
-                    <mat-icon matSuffix >delete</mat-icon>
+                    <mat-icon matSuffix id={{medication._id}} (click)="gotoDeletePage($event.target)" >delete</mat-icon>
                   </button>
             </td>
     
