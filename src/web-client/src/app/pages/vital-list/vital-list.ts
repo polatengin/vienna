@@ -25,12 +25,12 @@ vitals;
     this.router.navigate(['/vital/add']);
   }
 
-  getVitalId(obj) {
+  gotoEditPage(obj) {
     this.api.vitalId = obj.getAttribute('id');
     this.router.navigate(['/vital/edit/'+this.api.vitalId]);
     }
 
-    getVitalId2(obj){
+    gotoDeletePage(obj){
       this.api.vitalId = obj.getAttribute('id');
       this.router.navigate(['/vital/delete/'+this.api.vitalId]);
     }

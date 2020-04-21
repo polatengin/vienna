@@ -21,13 +21,13 @@
       <div mat-line>{{patient.fullName}}</div>
       <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{patient.patientId}} (click)="getPatientId($event.target)">edit</mat-icon>
+        <mat-icon matSuffix id={{patient.patientId}} (click)="gotoEditPage($event.target)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{patient.patientId}} (click)="getPatientId3($event.target)">delete</mat-icon>
+        <mat-icon matSuffix id={{patient.patientId}} (click)="gotoDeletePage($event.target)">delete</mat-icon>
       </button>
       <button  mat-icon-button  [matMenuTriggerFor]="menu" >
-        <mat-icon matSuffix id={{patient.patientId}} (click)="getPatientId2($event.target)">chevron_right</mat-icon>
+        <mat-icon matSuffix id={{patient.patientId}} (click)="getPatientId($event.target)">chevron_right</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Patient Admission</button>

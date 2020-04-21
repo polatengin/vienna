@@ -13,10 +13,10 @@
       <div mat-line>{{dailyAssessment.date | date}}</div>
       <div mat-line>{{dailyAssessment.patientId}}</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{dailyAssessment._id}} (click)="getId($event.target)">edit</mat-icon>
+        <mat-icon matSuffix id={{dailyAssessment._id}} (click)="gotoEditPage($event.target)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{dailyAssessment._id}} (click)="getId2($event.target)">delete</mat-icon>
+        <mat-icon matSuffix id={{dailyAssessment._id}} (click)="gotoDeletePage($event.target)">delete</mat-icon>
       </button>
       <mat-divider></mat-divider>
     </mat-list-item>

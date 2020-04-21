@@ -42,17 +42,17 @@ filterText:any;
     this.api.patientName = obj.getAttribute('id');
     }
 
-  getPatientId(obj) {
+  gotoEditPage(obj) {
     this.api.patientId = obj.getAttribute('id');
     this.router.navigate(['/patient/edit/'+this.api.patientId]);
     }
 
     
-    getPatientId2(obj){
+    getPatientId(obj){
       this.api.patientId = obj.getAttribute('id');
     }
 
-    getPatientId3(obj){
+    gotoDeletePage(obj){
       this.api.patientId = obj.getAttribute('id');
       this.router.navigate(['/patient/delete/'+this.api.patientId]);
     }

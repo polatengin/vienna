@@ -26,12 +26,12 @@ dailyAssessments;
     this.router.navigate(['/dailyassessment/add']);
   }
 
-  getId(obj) {
+  gotoEditPage(obj) {
     this.api.dailyAssessmentId= obj.getAttribute('id');
     this.router.navigate(['/dailyassessment/edit/'+this.api.dailyAssessmentId]);
     }
 
-    getId2(obj){
+    gotoDeletePage(obj){
       this.api.dailyAssessmentId = obj.getAttribute('id');
       this.router.navigate(['/dailyassessment/delete/'+this.api.dailyAssessmentId]);
     }

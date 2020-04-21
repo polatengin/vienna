@@ -27,10 +27,10 @@
       <div mat-line>{{doctor.fullName}}</div>
       <div mat-line>{{doctor.specialty}}</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{doctor._id}} (click)="getId($event.target)">edit</mat-icon>
+        <mat-icon matSuffix id={{doctor._id}} (click)="gotoEditPage($event.target)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{doctor._id}} (click)="getDoctorId($event.target)">delete</mat-icon>
+        <mat-icon matSuffix id={{doctor._id}} (click)="gotoDeletePage($event.target)">delete</mat-icon>
       </button>
       <mat-divider></mat-divider>
     </mat-list-item>
