@@ -17,7 +17,7 @@ export class MedicationEditPageComponent {
  medication;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
-    layout.updateTitle('Edit Daily Assessment');
+    layout.updateTitle('Edit Medication');
     layout.showMenu();
     layout.showBackButton();
     this.api.getMedication()
@@ -26,7 +26,10 @@ export class MedicationEditPageComponent {
     
   }
 
-  
+  update() {
+    this.api.updateMedication(this.medication);
+    this.router.navigate(['/medication/'+this.api.patientId]);
+  }
   
 
 }
