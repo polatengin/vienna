@@ -283,6 +283,14 @@ app.put('/medication/edit/:id', function(req, res, next)  {
    });
 });
 
+app.delete('/medication/delete/:id', function(req, res, next)  {
+  
+  MedicationsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
