@@ -275,6 +275,14 @@ app.get('/medication/edit/:id', function(req, res, next)  {
    });
 });
 
+app.put('/medication/edit/:id', function(req, res, next)  {
+  
+  MedicationsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
