@@ -2,7 +2,7 @@ import express, { response } from 'express';
 var cors = require('cors');
 import * as bodyparser from 'body-parser';
 
-import { MongoConnection, DoctorsCollection,VitalsCollection,PatientsCollection,DailyAssessmentsCollection } from './db.service';
+import { MongoConnection, DoctorsCollection,VitalsCollection,PatientsCollection,DailyAssessmentsCollection,MedicationsCollection } from './db.service';
 
 require('dotenv').config();
 
@@ -242,6 +242,22 @@ app.delete('/dailyassessment/delete/:id', function(req, res, next)  {
     res.json(post);
    });
 });
+
+
+/********************* Medication *************************** */
+app.post('/medication/add', (req, res) => {
+  let medication= new MedicationsCollection(req.body);
+   medication.save((error,data)=>{
+     if(error){
+       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+     } else{
+       res.json(data);
+     }
+   });
+   
+   
+ 
+ });
 
  /**************************************************************** */
 
