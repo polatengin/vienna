@@ -102,6 +102,10 @@ export class ApiService {
     return this.http.get(`${BASE}dailyassessment/`+ this.patientId);
    }
 
+   getMedications(){
+    return this.http.get(`${BASE}medication/`+ this.patientId);
+   }
+
    getVitals(){
     return this.http.get(`${BASE}vital/`+ this.patientId);
    }
