@@ -27,6 +27,9 @@ medications;
     this.router.navigate(['/medication/add']);
   }
 
- 
+  gotoEditPage(obj) {
+    this.api.medicationId = obj.getAttribute('id');
+    this.router.navigate(['/medication/edit/'+this.api.medicationId]);
+    }
 
 }
