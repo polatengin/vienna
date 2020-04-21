@@ -259,6 +259,14 @@ app.post('/medication/add', (req, res) => {
  
  });
 
+ app.get('/medication/:id', function(req, res, next)  {
+  
+  MedicationsCollection.find({patientId:req.params.id}, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
  /**************************************************************** */
 
 
