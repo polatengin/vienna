@@ -35,7 +35,7 @@ filterText:any;
   }
 
   gotoMedicationPage() {
-    this.router.navigate(['/medication/add']);
+    this.router.navigate(['/medication/'+this.api.patientId]);
   }
 
   getName(obj) {
