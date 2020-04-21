@@ -13,6 +13,7 @@ export class ApiService {
   patientId;
   vitalId;
   dailyAssessmentId;
+  medicationId;
   
   constructor(private http: HttpClient) {}
 
@@ -104,6 +105,10 @@ export class ApiService {
 
    getMedications(){
     return this.http.get(`${BASE}medication/`+ this.patientId);
+   }
+
+   getMedication(){
+    return this.http.get(`${BASE}medication/edit/`+ this.medicationId);
    }
 
    getVitals(){
