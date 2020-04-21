@@ -45,10 +45,19 @@ const DailyAssessmentSchema=new mongoose.Schema({
 },
 { timestamps: true });
 
+const MedicationSchema=new mongoose.Schema({
+  patientId: String,
+  medicine: String,
+  dose: String,
+  date: Date
+},
+{ timestamps: true });
+
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema,"Doctor");
 export const VitalsCollection =mongoose.model("PatientVital",VitalSchema, "PatientVital");
 export const PatientsCollection =mongoose.model("Patient",PatientSchema,"Patient");
 export const DailyAssessmentsCollection =mongoose.model("DailyAssessment",DailyAssessmentSchema,"DailyAssessment");
+export const MedicationsCollection =mongoose.model("Medication",MedicationSchema,"Medication");
 
 export class MongoConnection {
 
