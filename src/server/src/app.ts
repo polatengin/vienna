@@ -139,7 +139,7 @@ app.delete('/patient/delete/:id', function(req, res, next)  {
     res.json(post);
    });
 });
- /**********  Doctor ***************/
+ /**********************  Doctor *******************************/
  app.get('/doctor', (req, res) => {
   
   DoctorsCollection.find({}, (error, data) => {
@@ -262,6 +262,14 @@ app.post('/medication/add', (req, res) => {
  app.get('/medication/:id', function(req, res, next)  {
   
   MedicationsCollection.find({patientId:req.params.id}, function(err,post) {
+    if(err) return next(err);
+    res.json(post);
+   });
+});
+
+app.get('/medication/edit/:id', function(req, res, next)  {
+  
+  MedicationsCollection.findById(req.params.id, function(err,post) {
     if(err) return next(err);
     res.json(post);
    });
