@@ -34,6 +34,10 @@ filterText:any;
     this.router.navigate(['/dailyassessment/'+this.api.patientId]);
   }
 
+  gotoMedicationPage() {
+    this.router.navigate(['/medication/add']);
+  }
+
   getName(obj) {
     this.api.patientName = obj.getAttribute('id');
     }
