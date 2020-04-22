@@ -1,0 +1,87 @@
+<mat-card [class.mat-elevation-z0]="true">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-label>Patient Id</mat-label>
+        <input type="text" matInput  >
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Application Reason</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      
+      <!------ Complaints Part ----------->
+      <h3 style="text-align:center;">Complaints</h3>
+      <mat-divider></mat-divider>
+      <table>
+        <thead>
+          <tr>
+            <th>Complaint</th>
+            <mat-radio-group>
+            <th>Slight</th>
+            <th>Middle</th>
+            <th>Severe</th>
+            </mat-radio-group>
+            <th>Day</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="text-align:center;" *ngFor="let complaint of complaints" >
+            <td>{{complaint}}</td>
+           
+            <mat-radio-group>
+                <td>
+                    <mat-radio-button value="1"></mat-radio-button>
+                </td>
+                <td>
+                    <mat-radio-button value="2"></mat-radio-button>
+                </td>
+    
+                <td>
+                    <mat-radio-button value="3"></mat-radio-button>
+                </td>
+            </mat-radio-group>
+
+            <td>
+               
+                <input type="number" style="border:1px solid grey; width:50px; border-radius:10px" matInput appearance="outline" >
+               
+            </td>
+    
+            
+            
+          </tr>
+        </tbody>
+      </table> 
+<br>
+
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Add new complaint
+        </mat-panel-title>
+        
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>Complaint</mat-label>
+        <input matInput #newComplaint>
+      </mat-form-field>
+      <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="add(newComplaint)">
+        Add<mat-icon>add</mat-icon>
+      </button>
+      
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+   
+    </mat-card-content>
+    <mat-card-actions>
+      
+    </mat-card-actions>
+  </mat-card>
