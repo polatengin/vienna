@@ -13,7 +13,7 @@
       <h3 style="text-align:center;">Complaints</h3>
       <mat-divider></mat-divider>
       <table>
-        <thead>
+        <thead style="text-align:center;">
           <tr>
             <th>Complaint</th>
             <mat-radio-group>
@@ -31,14 +31,14 @@
            
             <mat-radio-group>
                 <td>
-                    <mat-radio-button value="1"></mat-radio-button>
+                    <mat-radio-button value="Slight"></mat-radio-button>
                 </td>
                 <td>
-                    <mat-radio-button value="2"></mat-radio-button>
+                    <mat-radio-button value="Middle"></mat-radio-button>
                 </td>
     
                 <td>
-                    <mat-radio-button value="3"></mat-radio-button>
+                    <mat-radio-button value="Severe"></mat-radio-button>
                 </td>
             </mat-radio-group>
 
@@ -199,6 +199,73 @@
  
 </mat-expansion-panel>
 </mat-accordion>
+<br><br>
+<!------ Family History Part ----------->
+<h3 style="text-align:center;">Family History</h3>
+<mat-divider></mat-divider>
+<table>
+  <thead style="text-align:center;">
+    <tr>
+      <th></th>
+      <mat-radio-group>
+      <th>Dead</th>
+      <th>Patient</th>
+      </mat-radio-group>
+      <th>Disease</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align:center;" *ngFor="let familyMember of familyMembers" >
+      <td>{{familyMember}}</td>
+     
+      <mat-radio-group>
+          <td>
+              <mat-radio-button value="Dead"></mat-radio-button>
+          </td>
+          <td>
+              <mat-radio-button value="Patient"></mat-radio-button>
+          </td>
+      </mat-radio-group>
+
+      <td>
+         
+          <input type="text" style="border:1px solid grey; width:100px; border-radius:10px" matInput appearance="outline" >
+         
+      </td>
+
+      
+      
+    </tr>
+  </tbody>
+</table> 
+<br>
+
+<mat-accordion>
+<mat-expansion-panel>
+<mat-expansion-panel-header>
+  <mat-panel-title>
+    Add new family member
+  </mat-panel-title>
+  
+</mat-expansion-panel-header>
+
+<mat-form-field>
+  <mat-label>Family Member</mat-label>
+  <input matInput #newFamilyMember>
+</mat-form-field>
+<button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addFamilyMember(newFamilyMember)">
+  Add<mat-icon>add</mat-icon>
+</button>
+
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                   (closed)="panelOpenState = false">
+
+
+</mat-expansion-panel>
+</mat-accordion>
+<br><br>
    
     </mat-card-content>
     <mat-card-actions>
