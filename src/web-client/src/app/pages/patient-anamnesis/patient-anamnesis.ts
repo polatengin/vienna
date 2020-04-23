@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { Complaint } from '../../models/diseases';
+import { Complaint,ChronicDisease } from '../../models/diseases';
 @Component({
   selector: 'app-patient-anamnesis',
   templateUrl: './patient-anamnesis.html',
@@ -16,17 +16,25 @@ panelOpenState = false;
   patientId;
   complaint=Complaint;
   complaints;
+  chronicDisease=ChronicDisease;
+  chronicDiseases;
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Patient Anamnesis');
     layout.showMenu();
     layout.showBackButton();
     
     this.complaints=Object.values(this.complaint);
+    this.chronicDiseases=Object.values(this.chronicDisease);
   }
 
   add(newComplaint: HTMLInputElement) {
    this.complaints.push(newComplaint.value);
    newComplaint.value="";
   }
+
+  addChronicDisease(newChronicDisease: HTMLInputElement) {
+    this.chronicDiseases.push(newChronicDisease.value);
+    newChronicDisease.value="";
+   }
 
 }
