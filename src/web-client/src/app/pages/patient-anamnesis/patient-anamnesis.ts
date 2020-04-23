@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { Complaint,ChronicDisease,Operation } from '../../models/diseases';
+import { Complaint,ChronicDisease,Operation, FamilyMember } from '../../models/diseases';
 @Component({
   selector: 'app-patient-anamnesis',
   templateUrl: './patient-anamnesis.html',
@@ -20,6 +20,8 @@ panelOpenState = false;
   chronicDiseases;
   operation=Operation;
   operations;
+  familyMember=FamilyMember;
+  familyMembers;
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Patient Anamnesis');
     layout.showMenu();
@@ -28,6 +30,7 @@ panelOpenState = false;
     this.complaints=Object.values(this.complaint);
     this.chronicDiseases=Object.values(this.chronicDisease);
     this.operations=Object.values(this.operation);
+    this.familyMembers=Object.values(this.familyMember);
   }
 
   add(newComplaint: HTMLInputElement) {
@@ -43,6 +46,11 @@ panelOpenState = false;
    addOperation(newOperation: HTMLInputElement) {
     this.operations.push(newOperation.value);
     newOperation.value="";
+   }
+
+   addFamilyMember(newFamilyMember: HTMLInputElement) {
+    this.familyMembers.push(newFamilyMember.value);
+    newFamilyMember.value="";
    }
 
 }
