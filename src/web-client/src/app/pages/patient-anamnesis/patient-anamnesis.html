@@ -136,6 +136,69 @@
   
 </mat-expansion-panel>
 </mat-accordion>
+<br><br>
+ <!------ Operations Part ----------->
+ <h3 style="text-align:center;">Operations</h3>
+ <mat-divider></mat-divider>
+ <table>
+   <thead>
+     <tr>
+       <th></th>
+       <th></th>
+       <th>History</th>
+       
+     </tr>
+   </thead>
+   <tbody>
+     <tr style="text-align:center;" *ngFor="let operation of operations" >
+       <td>
+          
+         <mat-checkbox></mat-checkbox>
+          
+       </td>
+       <td>{{operation}}</td>
+       
+       <td>
+               
+        <input type="text" style="border:1px solid grey; width:70px; border-radius:10px" matInput appearance="outline" >
+       
+    </td>
+      
+       
+
+       
+
+       
+       
+     </tr>
+   </tbody>
+ </table> 
+<br>
+
+<mat-accordion>
+<mat-expansion-panel>
+ <mat-expansion-panel-header>
+   <mat-panel-title>
+     Add new operation
+   </mat-panel-title>
+   
+ </mat-expansion-panel-header>
+
+ <mat-form-field>
+   <mat-label>Operation</mat-label>
+   <input matInput #newOperation>
+ </mat-form-field>
+ <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addOperation(newOperation)">
+   Add<mat-icon>add</mat-icon>
+ </button>
+ 
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+ 
+ 
+</mat-expansion-panel>
+</mat-accordion>
    
     </mat-card-content>
     <mat-card-actions>
