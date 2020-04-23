@@ -79,6 +79,63 @@
       
     </mat-expansion-panel>
   </mat-accordion>
+<br><br>
+  <!------ Chronic Diseases Part ----------->
+  <h3 style="text-align:center;">Chronic Diseases</h3>
+  <mat-divider></mat-divider>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="text-align:center;" *ngFor="let chronicDisease of chronicDiseases" >
+        <td>
+           
+          <mat-checkbox></mat-checkbox>
+           
+        </td>
+        
+        <td>{{chronicDisease}}</td>
+       
+        
+
+        
+
+        
+        
+      </tr>
+    </tbody>
+  </table> 
+<br>
+
+<mat-accordion>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add new chronic disease
+    </mat-panel-title>
+    
+  </mat-expansion-panel-header>
+
+  <mat-form-field>
+    <mat-label>Chronic Disease</mat-label>
+    <input matInput #newChronicDisease>
+  </mat-form-field>
+  <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addChronicDisease(newChronicDisease)">
+    Add<mat-icon>add</mat-icon>
+  </button>
+  
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+  
+  
+</mat-expansion-panel>
+</mat-accordion>
    
     </mat-card-content>
     <mat-card-actions>
