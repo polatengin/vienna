@@ -35,3 +35,16 @@ export enum Operation {
     Anjiyo='Anjiyo',
     Akciğer='Akciğer'
 }
+
+export enum FamilyMember {
+    Baba='Baba',
+    Anne='Anne',
+    Kardeş='Kardeş',
+    Dede='Dede',
+    Anneanne='Anneanne',
+    Babaanne='Babaanne',
+    Amca='Amca',
+    Hala='Hala',
+    Teyze='Teyze',
+    Dayı='Dayı',
+}
