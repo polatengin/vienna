@@ -27,3 +27,11 @@ export enum ChronicDisease{
     Kortizon='Kortizon Tedavisi Alıyor'
 
 }
+
+export enum Operation {
+    Kolonoskopi='Kolonoskopi',
+    Kemoterapi='Kemoterapi',
+    Radyoterapi='Radyoterapi',
+    Anjiyo='Anjiyo',
+    Akciğer='Akciğer'
+}
