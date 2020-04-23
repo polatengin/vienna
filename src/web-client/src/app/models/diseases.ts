@@ -10,3 +10,20 @@ export enum Complaint {
     VücutAgrıları='Vücut Ağrıları',
     İshalKusma='İshal-Kusma'
 }
+
+export enum ChronicDisease{
+    Diyabet='Diyabet(Şeker) Hastalığı',
+    Tansiyon= 'Yüksek Tansiyon(Hipertansiyon)',
+    Kalp='Kronik Kalp Rahatsızlığı',
+    Akciğer='Kronik Akciğer Hastalığı',
+    Karaciğer='Kronik Karaciğer Hastalığı',
+    Böbrek='Kronik Böbrek Hastalığı',
+    Genetik='Genetik Rahatsızlık',
+    Romatizma='Düzenli romatizma ilacı veya ağrı kesici alıyor',
+    KanKanseri='Kan Kanseri(hematolojik kanser)',
+    Kanser='Diğer Kanser Türleri(soloid kanser)',
+    Kemoterapi='Kemoterapi görüyor',
+    Bağışıklık='Bağışıklık Sistemi Bozukluğu',
+    Kortizon='Kortizon Tedavisi Alıyor'
+
+}
