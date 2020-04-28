@@ -1,45 +1,32 @@
 <mat-toolbar>
-  <!-- <mat-form-field class="full-width">
-    <input matInput>
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field> -->
   <mat-form-field class="full-width">
     <input id="search"  matInput  placeholder="Search Patient" [(ngModel)]="filterText">
   </mat-form-field>
-  
-  
   <button mat-icon-button (click)="gotoNewPatientPage()">
     <mat-icon matSuffix>person_add</mat-icon>
   </button>
 </mat-toolbar>
 <br />
-<mat-card>
-  <mat-list>
-    
-    <mat-list-item *ngFor="let patient of patients | searchFilter: filterText">
-      <mat-icon mat-list-icon>account_circle</mat-icon>
-      <div mat-line>{{patient.fullName}}</div>
-      <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
-      <button  mat-icon-button>
-        <mat-icon matSuffix id={{patient.patientId}} (click)="gotoEditPage($event.target)">edit</mat-icon>
-      </button>
-      <button  mat-icon-button>
-        <mat-icon matSuffix id={{patient.patientId}} (click)="gotoDeletePage($event.target)">delete</mat-icon>
-      </button>
-      <button  mat-icon-button  [matMenuTriggerFor]="menu" >
-        <mat-icon matSuffix id={{patient.patientId}} (click)="getPatientId($event.target)">chevron_right</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Patient Admission</button>
-        <button mat-menu-item (click)="gotoDailyAssessmentPage()">Daily Assessment</button>
-        <button mat-menu-item (click)="gotoVitalPage()">Vitals</button>
-        <button mat-menu-item (click)="gotoMedicationPage()">Medication</button>
-      </mat-menu>
-      
-      <mat-divider></mat-divider>
-    </mat-list-item>
-    
-    
-    
-  </mat-list>
-</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let patient of patients | searchFilter: filterText">
+    <mat-icon mat-list-icon>account_circle</mat-icon>
+    <div mat-line>{{patient.fullName}}</div>
+    <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
+    <button mat-icon-button (click)="gotoEditPage(patient.patientId)">
+      <mat-icon matSuffix>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="gotoDeletePage(patient.patientId)">
+      <mat-icon matSuffix>delete</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon matSuffix>chevron_right</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Patient Admission</button>
+      <button mat-menu-item (click)="gotoDailyAssessmentPage(patient.patientId)">Daily Assessment</button>
+      <button mat-menu-item (click)="gotoVitalPage(patient.patientId)">Vitals</button>
+      <button mat-menu-item (click)="gotoMedicationPage(patient.patientId)">Medication</button>
+    </mat-menu>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

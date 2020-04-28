@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
-
-
-
 
 @Component({
   selector: 'app-vital-edit',
@@ -16,18 +13,20 @@ export class VitalEditPageComponent {
 
   vital;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Edit Vital');
     layout.showMenu();
     layout.showBackButton();
-    this.api.getVital()
-    .subscribe(data => this.vital = data);
-    
+
+    route.params.subscribe(params => {
+      this.api.getVital(params["id"]).subscribe(_ => this.vital = _);
+    });
   }
 
   update() {
-    this.api.updateVital(this.vital);
-    this.router.navigate(['/vital/'+this.api.patientId]);
+    this.api.updateVital(this.vital).subscribe(_ => {
+      this.router.navigate(['/vital/', this.vital.patientId]);
+    });
   }
 
 }

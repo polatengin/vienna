@@ -4,59 +4,49 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
+import { PatientListResponseModel } from '../../models/api-models';
+
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.html',
   styleUrls: ['./patient-list.scss']
 })
 export class PatientListPageComponent {
-patients;
-filterText:any;
+
+  patients: PatientListResponseModel[];
+
+  filterText: any;
+
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Patient List');
     layout.showMenu();
     layout.hideBackButton();
-    api.getPatients()
-    .subscribe(data => this.patients = data);
 
-    
+    api.getPatients().subscribe(_ => this.patients = _);
   }
 
   gotoNewPatientPage() {
     this.router.navigate(['/patient/add']);
   }
 
-  gotoVitalPage() {
-    this.router.navigate(['/vital/'+this.api.patientId]);
+  gotoVitalPage(patientId: number) {
+    this.router.navigate(['/vital/', patientId]);
   }
 
-  gotoDailyAssessmentPage() {
-    this.router.navigate(['/dailyassessment/'+this.api.patientId]);
+  gotoDailyAssessmentPage(patientId: number) {
+    this.router.navigate(['/dailyassessment/', patientId]);
   }
 
-  gotoMedicationPage() {
-    this.router.navigate(['/medication/'+this.api.patientId]);
+  gotoMedicationPage(patientId: number) {
+    this.router.navigate(['/medication/', patientId]);
   }
 
-  getName(obj) {
-    this.api.patientName = obj.getAttribute('id');
-    }
+  gotoEditPage(patientId: number) {
+    this.router.navigate(['/patient/edit/', patientId]);
+  }
 
-  gotoEditPage(obj) {
-    this.api.patientId = obj.getAttribute('id');
-    this.router.navigate(['/patient/edit/'+this.api.patientId]);
-    }
-
-    
-    getPatientId(obj){
-      this.api.patientId = obj.getAttribute('id');
-    }
-
-    gotoDeletePage(obj){
-      this.api.patientId = obj.getAttribute('id');
-      this.router.navigate(['/patient/delete/'+this.api.patientId]);
-    }
-
-  
+  gotoDeletePage(patientId: number){
+    this.router.navigate(['/patient/delete/', patientId]);
+  }
 
 }

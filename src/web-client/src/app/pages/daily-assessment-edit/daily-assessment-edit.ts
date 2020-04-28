@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
-
-
-
 
 @Component({
   selector: 'app-daily-assessment-edit',
@@ -14,22 +11,22 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class DailyAssessmentEditPageComponent {
 
- dailyAssessment;
+  dailyAssessment;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Edit Daily Assessment');
     layout.showMenu();
     layout.showBackButton();
-    this.api.getDailyAssessment()
-    .subscribe(data => this.dailyAssessment = data);
-    
-    
+
+    route.params.subscribe(params => {
+      this.api.getDailyAssessment(params["id"]).subscribe(_ => this.dailyAssessment = _);
+    });
   }
 
   update() {
-    this.api.updateDailyAssessment(this.dailyAssessment);
-    this.router.navigate(['/dailyassessment/'+this.api.patientId]);
+    this.api.updateDailyAssessment(this.dailyAssessment).subscribe(_ => {
+      this.router.navigate(['/dailyassessment/', this.dailyAssessment.patientId]);
+    });
   }
-  
 
 }

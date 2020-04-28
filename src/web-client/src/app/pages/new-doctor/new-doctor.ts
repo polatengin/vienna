@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { Doctor, Specialty } from '../../models/doctor';
+import { NewDoctorRequestModel, Specialty } from '../../models/api-models';
 
 @Component({
   selector: 'app-new-doctor',
@@ -13,16 +13,15 @@ import { Doctor, Specialty } from '../../models/doctor';
 })
 export class NewDoctorPageComponent {
 
-  request: Doctor = new Doctor();
-  specialty=Specialty;
+  request: NewDoctorRequestModel = new NewDoctorRequestModel();
   specialties;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Doctor');
     layout.showMenu();
     layout.showBackButton();
-    this.specialties=Object.values(this.specialty);
 
+    this.specialties = Object.values(Specialty);
   }
 
   save() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -14,24 +14,21 @@ import { VitalRequestModel } from '../../models/api-models';
 export class VitalPageComponent {
  
   request: VitalRequestModel = new VitalRequestModel();
-  patientId;
 
-
-
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
-    layout.updateTitle(this.api.patientName);
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
+    layout.updateTitle("patientName");
     layout.showMenu();
     layout.showBackButton();
-    this.patientId=this.api.patientId
-    this.request.patientId=this.patientId;
+
+    route.params.subscribe(params => {
+      this.api.getPatient(params["id"]).subscribe(_ => {
+        this.request.patientId=_.patientId;
+      });
+    });
   }
 
   save() {
     this.api.save(this.request);
-    
-   
   }
-  
-  
 
 }

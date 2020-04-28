@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -12,27 +12,23 @@ import { MedicationRequestModel } from '../../models/api-models';
   styleUrls: ['./medication-add.scss']
 })
 export class MedicationAddPageComponent {
- 
+
   request: MedicationRequestModel = new MedicationRequestModel();
-  patientId;
 
-
-
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
-    layout.updateTitle(this.api.patientName);
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
+    layout.updateTitle("patientName");
     layout.showMenu();
     layout.showBackButton();
-    this.patientId=this.api.patientId
-    this.request.patientId=this.patientId;
+
+    route.params.subscribe(params => {
+      this.request.patientId = params["id"];
+    });
   }
 
   save() {
-    this.api.saveMedication(this.request);
-    this.router.navigate(['/medication/'+ this.api.patientId]);
-    
-   
+    this.api.saveMedication(this.request).subscribe(_ => {
+      this.router.navigate(['/medication/'+ this.request.patientId]);
+    });
   }
-  
-  
 
 }

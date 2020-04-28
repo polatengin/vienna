@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -10,30 +10,29 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./daily-assessment-list.scss']
 })
 export class DailyAssessmentListPageComponent {
-dailyAssessments;
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+
+  model;
+
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Daily Assessment List');
     layout.showMenu();
     layout.showBackButton();
-    api.getDailyAssessments()
-    .subscribe(data => this.dailyAssessments = data);
-    
 
-    
+    route.params.subscribe(params => {
+      api.getDailyAssessments(params["id"]).subscribe(data => this.model = data);
+    });
   }
 
   gotoAddDailyAssessmentPage() {
     this.router.navigate(['/dailyassessment/add']);
   }
 
-  gotoEditPage(obj) {
-    this.api.dailyAssessmentId= obj.getAttribute('id');
-    this.router.navigate(['/dailyassessment/edit/'+this.api.dailyAssessmentId]);
-    }
+  gotoEditPage(dailyAssessmentId: number) {
+    this.router.navigate(['/dailyassessment/edit/', dailyAssessmentId]);
+  }
 
-    gotoDeletePage(obj){
-      this.api.dailyAssessmentId = obj.getAttribute('id');
-      this.router.navigate(['/dailyassessment/delete/'+this.api.dailyAssessmentId]);
-    }
+  gotoDeletePage(dailyAssessmentId: number) {
+    this.router.navigate(['/dailyassessment/delete/', dailyAssessmentId]);
+  }
 
 }

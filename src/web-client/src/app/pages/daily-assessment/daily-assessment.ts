@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -14,21 +14,23 @@ import { DailyAssessmentRequestModel } from '../../models/api-models';
 export class DailyAssessmentPageComponent {
 
   request: DailyAssessmentRequestModel = new DailyAssessmentRequestModel();
-  patientId;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Daily Assessment');
     layout.showMenu();
     layout.showBackButton();
-    this.patientId=this.api.patientId
-    this.request.patientId=this.patientId;
+
+    route.params.subscribe(params => {
+      this.api.getPatient(params["id"]).subscribe(_ => {
+        this.request.patientId = _.patientId;
+      });
+    });
   }
 
   save(){
-      this.api.saveDailyAssessment(this.request);
-      this.router.navigate(['/dailyassessment/'+this.api.patientId]);
+    this.api.saveDailyAssessment(this.request).subscribe(_ => {
+      this.router.navigate(['/dailyassessment/', this.request.patientId]);
+    });
   }
 
 }
-
-

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { Specialty } from '../../models/doctor';
+import { Specialty } from '../../models/api-models';
 
 @Component({
   selector: 'app-doctor-edit',
@@ -13,20 +13,19 @@ import { Specialty } from '../../models/doctor';
 })
 export class DoctorEditPageComponent {
 
-  
-  specialty=Specialty;
   specialties;
   doctor;
-  
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private route: ActivatedRoute) {
     layout.updateTitle('Edit Doctor');
     layout.showMenu();
     layout.showBackButton();
-    this.specialties=Object.values(this.specialty);
-    this.api.getDoctor()
-    .subscribe(data => this.doctor = data);
 
+    this.specialties = Object.values(Specialty);
+
+    route.params.subscribe(params => {
+      this.api.getDoctor(params["id"]).subscribe(_ => this.doctor = _);
+    });
   }
 
   update() {

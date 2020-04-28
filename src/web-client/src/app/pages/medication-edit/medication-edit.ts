@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -14,22 +14,21 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class MedicationEditPageComponent {
 
- medication;
+  medication;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Edit Medication');
     layout.showMenu();
     layout.showBackButton();
-    this.api.getMedication()
-    .subscribe(data => this.medication = data);
-    
-    
+
+    route.params.subscribe(params => {
+      this.api.getMedication(params["id"]).subscribe(_ => this.medication = _);
+    });
   }
 
   update() {
     this.api.updateMedication(this.medication);
-    this.router.navigate(['/medication/'+this.api.patientId]);
+    this.router.navigate(['/medication/', this.medication.patientId]);
   }
-  
 
 }

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
 
-import { NewPatientRequestModel } from '../../models/api-models';
-
-
+import { EditPatientRequestModel } from '../../models/api-models';
 
 @Component({
   selector: 'app-patient-edit',
@@ -15,14 +13,16 @@ import { NewPatientRequestModel } from '../../models/api-models';
 })
 export class PatientEditPageComponent {
 
-  patient;
+  patient: EditPatientRequestModel;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Edit Patient');
     layout.showMenu();
     layout.showBackButton();
-    this.api.getPatient()
-    .subscribe(data => this.patient = data);
+
+    route.params.subscribe(params => {
+      this.api.getPatient(params["id"]).subscribe(_ => this.patient = _);
+    });
   }
 
   update() {

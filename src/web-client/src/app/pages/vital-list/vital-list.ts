@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -10,31 +10,29 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./vital-list.scss']
 })
 export class VitalListPageComponent {
-vitals;
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+
+  vitals;
+
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Vital List');
     layout.showMenu();
     layout.showBackButton();
-    api.getVitals()
-    .subscribe(data => this.vitals = data);
 
-    
+    route.params.subscribe(params => {
+      api.getVitals(params["id"]).subscribe(_ => this.vitals = _);
+    });
   }
 
   gotoAddVitalPage(){
     this.router.navigate(['/vital/add']);
   }
 
-  gotoEditPage(obj) {
-    this.api.vitalId = obj.getAttribute('id');
-    this.router.navigate(['/vital/edit/'+this.api.vitalId]);
-    }
+  gotoEditPage(vitalId: number) {
+    this.router.navigate(['/vital/edit/', vitalId]);
+  }
 
-    gotoDeletePage(obj){
-      this.api.vitalId = obj.getAttribute('id');
-      this.router.navigate(['/vital/delete/'+this.api.vitalId]);
-    }
-
-    
+  gotoDeletePage(vitalId: number){
+    this.router.navigate(['/vital/delete/', vitalId]);
+  }
 
 }

@@ -1,139 +1,117 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequestModel, LoginResponseModel,VitalRequestModel,NewPatientRequestModel,DailyAssessmentRequestModel,MedicationRequestModel } from '../models/api-models';
-import { Doctor } from '../models/doctor';
+
 import { Observable } from 'rxjs';
+
+import { LoginRequestModel, LoginResponseModel, VitalRequestModel, NewPatientRequestModel, DailyAssessmentRequestModel, MedicationRequestModel, PatientListResponseModel, NewDoctorRequestModel, UpdateDoctorRequestModel, GetPatientResponseModel } from '../models/api-models';
 
 const BASE: string = 'http://localhost:3000/';
 
 @Injectable()
 export class ApiService {
-  patientName;
-  doctorId;
-  patientId;
-  vitalId;
-  dailyAssessmentId;
-  medicationId;
-  
   constructor(private http: HttpClient) {}
 
   login(request: LoginRequestModel): Observable<LoginResponseModel> {
     return this.http.post<LoginResponseModel>(`${BASE}login`, request);
   }
 
-  
-
-  save(request:VitalRequestModel){
-    this.http.post(`${BASE}vital/add`, request).subscribe((data) => {});
+  save(request: VitalRequestModel) {
+    return this.http.post(`${BASE}vital/add`, request);
   }
 
-  savePatient(request:NewPatientRequestModel){
-    this.http.post(`${BASE}patient/add`, request).subscribe((data) => {});
+  savePatient(request: NewPatientRequestModel) {
+    return this.http.post(`${BASE}patient/add`, request);
   }
 
-  saveDoctor(request:Doctor){
-    this.http.post(`${BASE}doctor/add`, request).subscribe((data) => {});
+  saveDoctor(request: NewDoctorRequestModel) {
+    return this.http.post(`${BASE}doctor/add`, request);
   }
 
-  saveDailyAssessment(request:DailyAssessmentRequestModel){
-    this.http.post(`${BASE}dailyassessment/add`, request).subscribe((data) => {});
+  saveDailyAssessment(request: DailyAssessmentRequestModel) {
+    return this.http.post(`${BASE}dailyassessment/add`, request);
   }
 
-  saveMedication(request:MedicationRequestModel){
-    this.http.post(`${BASE}medication/add`, request).subscribe((data) => {});
+  saveMedication(request: MedicationRequestModel) {
+    return this.http.post(`${BASE}medication/add`, request);
   }
 
-  updateDoctor(request:Doctor){
-   return this.http.put(`${BASE}doctor/edit/`+ this.doctorId, request).subscribe((data) => {});
-   
+  updateDoctor(request: UpdateDoctorRequestModel) {
+   return this.http.put(`${BASE}doctor/edit/${request.doctorId}`, request);
   }
 
-  updatePatient(request:NewPatientRequestModel){
-    return this.http.put(`${BASE}patient/edit/`+ this.patientId, request).subscribe((data) => {});
-    
-   }
-
-   updateVital(request:VitalRequestModel){
-    return this.http.put(`${BASE}vital/edit/`+ this.vitalId, request).subscribe((data) => {});
-    
-   }
-
-   updateDailyAssessment(request:DailyAssessmentRequestModel){
-    return this.http.put(`${BASE}dailyassessment/edit/`+ this.dailyAssessmentId, request).subscribe((data) => {});
-    
-   }
-
-   updateMedication(request:MedicationRequestModel){
-    return this.http.put(`${BASE}medication/edit/`+ this.medicationId, request).subscribe((data) => {});
-    
-   }
-
-   deleteVital(){
-    return this.http.delete(`${BASE}vital/delete/`+ this.vitalId).subscribe((data) => {});
-    
-   }
-
-   deleteMedication(){
-    return this.http.delete(`${BASE}medication/delete/`+ this.medicationId).subscribe((data) => {});
-    
-   }
-
-   deleteDailyAssessment(){
-    return this.http.delete(`${BASE}dailyassessment/delete/`+ this.dailyAssessmentId).subscribe((data) => {});
-    
-   }
-
-   deletePatient(){
-    return this.http.delete(`${BASE}patient/delete/`+ this.patientId).subscribe((data) => {});
-    
-   }
-
-   deleteDoctor(){
-    return this.http.delete(`${BASE}doctor/delete/`+ this.doctorId).subscribe((data) => {});
-    
-   }
-
-  getPatients(){
-   return this.http.get(`${BASE}patient`);
+  updatePatient(request: NewPatientRequestModel) {
+    return this.http.put(`${BASE}patient/edit/${request.patientId}`, request);
   }
 
-  getDoctors(){
+  updateVital(request: VitalRequestModel) {
+    return this.http.put(`${BASE}vital/edit/${request.vitalId}`, request);
+  }
+
+  updateDailyAssessment(request: DailyAssessmentRequestModel) {
+    return this.http.put(`${BASE}dailyassessment/edit/${request.dailyAssessmentId}`, request);
+  }
+
+  updateMedication(request: MedicationRequestModel) {
+    return this.http.put(`${BASE}medication/edit/${request.medicationId}`, request);
+  }
+
+  deleteVital(vitalId: number) {
+    return this.http.delete(`${BASE}vital/delete/${vitalId}`);
+  }
+
+  deleteMedication(medicationId: number) {
+    return this.http.delete(`${BASE}medication/delete/${medicationId}`);
+  }
+
+  deleteDailyAssessment(dailyAssessmentId: number) {
+    return this.http.delete(`${BASE}dailyassessment/delete/${dailyAssessmentId}`);
+  }
+
+  deletePatient(patientId: number) {
+    return this.http.delete(`${BASE}patient/delete/${patientId}`);
+  }
+
+  deleteDoctor(doctorId: number) {
+    return this.http.delete(`${BASE}doctor/delete/${doctorId}`);
+  }
+
+  getPatients(): Observable<PatientListResponseModel[]> {
+   return this.http.get<PatientListResponseModel[]>(`${BASE}patient`);
+  }
+
+  getDoctors() {
     return this.http.get(`${BASE}doctor`);
-   }
-   
-   getDoctor(){
-    return this.http.get(`${BASE}doctor/edit/`+ this.doctorId);
-   }
+  }
 
-   getPatient(){
-    return this.http.get(`${BASE}patient/edit/`+ this.patientId);
-   }
+  getDoctor(doctorId: number) {
+    return this.http.get(`${BASE}doctor/edit/${doctorId}`);
+  }
 
-   getDailyAssessments(){
-    return this.http.get(`${BASE}dailyassessment/`+ this.patientId);
-   }
+  getPatient(patientId: number): Observable<GetPatientResponseModel> {
+    return this.http.get<GetPatientResponseModel>(`${BASE}patient/edit/${patientId}`);
+  }
 
-   getMedications(){
-    return this.http.get(`${BASE}medication/`+ this.patientId);
-   }
+  getDailyAssessments(patientId: number) {
+    return this.http.get(`${BASE}dailyassessment/${patientId}`);
+  }
 
-   getMedication(){
-    return this.http.get(`${BASE}medication/edit/`+ this.medicationId);
-   }
+  getMedications(patientId: number) {
+    return this.http.get(`${BASE}medication/${patientId}`);
+  }
 
-   getVitals(){
-    return this.http.get(`${BASE}vital/`+ this.patientId);
-   }
+  getMedication(medicationId: number) {
+    return this.http.get(`${BASE}medication/edit/${medicationId}`);
+  }
 
-   getVital(){
-    return this.http.get(`${BASE}vital/edit/`+ this.vitalId);
-   }
+  getVitals(patientId: number) {
+    return this.http.get(`${BASE}vital/${patientId}`);
+  }
 
-   getDailyAssessment(){
-    return this.http.get(`${BASE}dailyassessment/edit/`+ this.dailyAssessmentId);
-   }
-   
-   
+  getVital(vitalId: number) {
+    return this.http.get(`${BASE}vital/edit/${vitalId}`);
+  }
 
-
+  getDailyAssessment(dailyAssessmentId: number) {
+    return this.http.get(`${BASE}dailyassessment/edit/${dailyAssessmentId}`);
+  }
 }

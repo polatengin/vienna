@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { LayoutService } from '../../services/layout.service';
@@ -10,31 +10,30 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./medication-list.scss']
 })
 export class MedicationListPageComponent {
-medications;
 
-  constructor(layout: LayoutService, private api: ApiService, private router: Router) {
+  medications;
+  patientId: number;
+
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Medication List');
     layout.showMenu();
     layout.showBackButton();
-    api.getMedications()
-    .subscribe(data => this.medications = data);
-    
 
-    
+    route.params.subscribe(params => {
+      this.api.getMedications(params["id"]).subscribe(_ => this.medications = _);
+    });
   }
 
   gotoAddMedicationPage() {
     this.router.navigate(['/medication/add']);
   }
 
-  gotoEditPage(obj) {
-    this.api.medicationId = obj.getAttribute('id');
-    this.router.navigate(['/medication/edit/'+this.api.medicationId]);
-    }
+  gotoEditPage(medicationId: number) {
+    this.router.navigate(['/medication/edit/', medicationId]);
+  }
 
-    gotoDeletePage(obj){
-      this.api.medicationId = obj.getAttribute('id');
-      this.router.navigate(['/medication/delete/'+this.api.medicationId]);
-    }
+  gotoDeletePage(medicationId: number){
+    this.router.navigate(['/medication/delete/', medicationId]);
+  }
 
 }
