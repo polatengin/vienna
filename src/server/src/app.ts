@@ -1,15 +1,14 @@
-import express, { response } from 'express';
+import express from 'express';
 var cors = require('cors');
 import * as bodyparser from 'body-parser';
 
-import { MongoConnection, DoctorsCollection,VitalsCollection,PatientsCollection,DailyAssessmentsCollection,MedicationsCollection } from './db.service';
+import { MongoConnection, DoctorsCollection, VitalsCollection, PatientsCollection, DailyAssessmentsCollection, MedicationsCollection } from './db.service';
 
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 const db = new MongoConnection();
-
 
 db.init(process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD);
 
@@ -40,276 +39,221 @@ app.post('/login', (req, res) => {
 /*************** Vital **********************/
 
 app.post('/vital/add', (req, res) => {
- let vital = new VitalsCollection(req.body);
-  vital.save((error,data)=>{
+  let vital = new VitalsCollection(req.body);
+  vital.save((error,data) => {
+    if(error) {
+      res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    } else{
+      res.json(data);
+    }
+  });
+});
+
+app.get('/vital/:id', (req, res, next) => {
+  VitalsCollection.find({patientId:req.params.id}, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+app.put('/vital/edit/:id', (req, res, next) => {
+  VitalsCollection.findByIdAndUpdate(req.params.id, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+app.get('/vital/edit/:id', (req, res, next) => {
+  VitalsCollection.findById(req.params.id, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+app.delete('/vital/delete/:id', (req, res, next) => {
+  VitalsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+/*************** Patient ******************/
+
+app.post('/patient/add', (req, res) => {
+  let patient = new PatientsCollection(req.body);
+   patient.save((error,data) => {
+     if(error){
+       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+     } else{
+       res.json(data);
+     }
+   });
+});
+
+app.get('/patient', (req, res) => {
+  PatientsCollection.find({}, (error, data) => {
+    if (error) {
+      res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    }
+    else {
+      res.json(data);
+    }
+  });
+});
+
+app.put('/patient/edit/:id', (req, res, next) => {
+  PatientsCollection.findOneAndUpdate({patientId:req.params.id}, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+app.get('/patient/edit/:id', (req, res, next) => {
+  PatientsCollection.findOne({patientId:req.params.id}, (err, post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+app.delete('/patient/delete/:id', (req, res, next) => {
+  PatientsCollection.findOneAndRemove({patientId:req.params.id}, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
+
+/**********************  Doctor *******************************/
+
+app.get('/doctor', (req, res) => {
+  DoctorsCollection.find({}, (error, data) => {
+    if (error) {
+      res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    }
+    else {
+      res.json(data);
+    }
+  });
+});
+
+app.post('/doctor/add', (req, res) => {
+  let doctor = new DoctorsCollection(req.body);
+
+  doctor.save((error,data) => {
     if(error){
       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
     } else{
       res.json(data);
     }
   });
-  
-  
-
 });
 
-app.get('/vital/:id', function(req, res, next)  {
-  
-  VitalsCollection.find({patientId:req.params.id}, function(err,post) {
+app.put('/doctor/edit/:id', (req, res, next) => {
+  DoctorsCollection.findByIdAndUpdate(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.put('/vital/edit/:id', function(req, res, next)  {
-  
-  VitalsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+app.get('/doctor/edit/:id', (req, res, next) => {
+  DoctorsCollection.findById(req.params.id, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.get('/vital/edit/:id', function(req, res, next)  {
-  
-  VitalsCollection.findById(req.params.id, function(err,post) {
+app.delete('/doctor/delete/:id', (req, res, next) => {
+  DoctorsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
-});
-
-app.delete('/vital/delete/:id', function(req, res, next)  {
-  
-  VitalsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
-
-/***************   Patient **************** */
-app.post('/patient/add', (req, res) => {
-  let patient = new PatientsCollection(req.body);
-   patient.save((error,data)=>{
-     if(error){
-       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-     } else{
-       res.json(data);
-     }
-   });
-   
-   
- 
- });
-
- 
-
- app.get('/patient', (req, res) => {
-  
-  PatientsCollection.find({}, (error, data) => {
-    if (error) {
-        res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-    }
-    else {
-        res.json(data);
-    }
-});
-   
-   
- 
- });
- app.put('/patient/edit/:id', function(req, res, next)  {
-  
-  PatientsCollection.findOneAndUpdate({patientId:req.params.id}, req.body, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
-
-app.get('/patient/edit/:id', function(req, res, next)  {
-  
-PatientsCollection.findOne({patientId:req.params.id}, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
-
-app.delete('/patient/delete/:id', function(req, res, next)  {
-  
-  PatientsCollection.findOneAndRemove({patientId:req.params.id}, req.body, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
- /**********************  Doctor *******************************/
- app.get('/doctor', (req, res) => {
-  
-  DoctorsCollection.find({}, (error, data) => {
-    if (error) {
-        res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-    }
-    else {
-        res.json(data);
-    }
-});
-   
-   
- 
- });
- 
- app.post('/doctor/add', (req, res) => {
-  let doctor = new DoctorsCollection(req.body);
-   doctor.save((error,data)=>{
-     if(error){
-       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-     } else{
-       res.json(data);
-     }
-   });
-   
-   
- 
- });
- 
-
-
-app.put('/doctor/edit/:id', function(req, res, next)  {
-  
-  DoctorsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
-
-app.get('/doctor/edit/:id', function(req, res, next)  {
-  
-  DoctorsCollection.findById(req.params.id, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
-});
-
-app.delete('/doctor/delete/:id', function(req, res, next)  {
-  
-  DoctorsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
+  });
 });
 
 /***************  Daily Assessment ********************* */
 
 app.post('/dailyassessment/add', (req, res) => {
   let dailyAssessment = new DailyAssessmentsCollection(req.body);
-   dailyAssessment.save((error,data)=>{
-     if(error){
-       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-     } else{
-       res.json(data);
-     }
-   });
-   
-   
- 
- });
 
- app.get('/dailyassessment/:id', function(req, res, next)  {
-  
-  DailyAssessmentsCollection.find({patientId:req.params.id}, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
-   });
+  dailyAssessment.save((error,data)=>{
+    if(error){
+      res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    } else{
+      res.json(data);
+    }
+  });
 });
 
-app.get('/dailyassessment/edit/:id', function(req, res, next)  {
-  
-  DailyAssessmentsCollection.findById(req.params.id, function(err,post) {
+app.get('/dailyassessment/:id', (req, res, next) => {
+  DailyAssessmentsCollection.find({patientId:req.params.id}, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.put('/dailyassessment/edit/:id', function(req, res, next)  {
-  
-  DailyAssessmentsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+app.get('/dailyassessment/edit/:id', (req, res, next) => {
+  DailyAssessmentsCollection.findById(req.params.id, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.delete('/dailyassessment/delete/:id', function(req, res, next)  {
-  
-  DailyAssessmentsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+app.put('/dailyassessment/edit/:id', (req, res, next) => {
+  DailyAssessmentsCollection.findByIdAndUpdate(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
+app.delete('/dailyassessment/delete/:id', (req, res, next) => {
+  DailyAssessmentsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
 
 /********************* Medication *************************** */
+
 app.post('/medication/add', (req, res) => {
   let medication= new MedicationsCollection(req.body);
-   medication.save((error,data)=>{
-     if(error){
-       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
-     } else{
-       res.json(data);
-     }
-   });
-   
-   
- 
- });
 
- app.get('/medication/:id', function(req, res, next)  {
-  
-  MedicationsCollection.find({patientId:req.params.id}, function(err,post) {
-    if(err) return next(err);
-    res.json(post);
+  medication.save((error,data) => {
+    if(error){
+      res.send("Beklenmeyen bir hatayla karşılaşıldı...");
+    } else{
+      res.json(data);
+    }
    });
 });
 
-app.get('/medication/edit/:id', function(req, res, next)  {
-  
-  MedicationsCollection.findById(req.params.id, function(err,post) {
+app.get('/medication/:id', (req, res, next) => {
+  MedicationsCollection.find({patientId:req.params.id}, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.put('/medication/edit/:id', function(req, res, next)  {
-  
-  MedicationsCollection.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+app.get('/medication/edit/:id', (req, res, next) => {
+  MedicationsCollection.findById(req.params.id, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
-app.delete('/medication/delete/:id', function(req, res, next)  {
-  
-  MedicationsCollection.findByIdAndRemove(req.params.id, req.body, function(err,post) {
+app.put('/medication/edit/:id', (req, res, next) => {
+  MedicationsCollection.findByIdAndUpdate(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
-   });
+  });
 });
 
- /**************************************************************** */
+app.delete('/medication/delete/:id', (req, res, next) => {
+  MedicationsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
+    if(err) return next(err);
+    res.json(post);
+  });
+});
 
+/**************************************************************** */
 
 app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
 });
-
-// VitalsCollection.find({},(err,vitals)=>{
-//   if(err) throw err;
-//   console.log(vitals);
-// })
-
-// DoctorsCollection.find({},(err,doctors)=>{
-//   if(err) throw err;
-//   console.log(doctors);
-// })
-
-// PatientsCollection.find({},(err,patients)=>{
-//   if(err) throw err;
-//   console.log(patients);
-// })
-

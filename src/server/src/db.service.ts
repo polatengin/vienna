@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-
 const DoctorSchema = new mongoose.Schema({
   fullName: String,
   phoneNumber: String,
@@ -9,8 +8,8 @@ const DoctorSchema = new mongoose.Schema({
   password: String,
   isActive: Boolean,
   date: Date
-},
-{ timestamps: true });
+}, { timestamps: true });
+
 const VitalSchema=new mongoose.Schema({
   patientId: String,
   respiration: String,
@@ -19,8 +18,7 @@ const VitalSchema=new mongoose.Schema({
   bloodPressure1: String,
   bloodPressure2: String,
   date: Date
-},
-{ timestamps: true });
+}, { timestamps: true });
 
 const PatientSchema=new mongoose.Schema({
   fullName: String,
@@ -30,8 +28,7 @@ const PatientSchema=new mongoose.Schema({
   email: String,
   patientId: String,
   date: Date
-},
-{ timestamps: true });
+}, { timestamps: true });
 
 const DailyAssessmentSchema=new mongoose.Schema({
   patientId: String,
@@ -42,38 +39,29 @@ const DailyAssessmentSchema=new mongoose.Schema({
   nutrition: String,
   respiration: String,
   date: Date
-},
-{ timestamps: true });
+}, { timestamps: true });
 
 const MedicationSchema=new mongoose.Schema({
   patientId: String,
   medicine: String,
   dose: String,
   date: Date
-},
-{ timestamps: true });
+}, { timestamps: true });
 
 export const DoctorsCollection = mongoose.model("Doctor", DoctorSchema,"Doctor");
-export const VitalsCollection =mongoose.model("PatientVital",VitalSchema, "PatientVital");
-export const PatientsCollection =mongoose.model("Patient",PatientSchema,"Patient");
-export const DailyAssessmentsCollection =mongoose.model("DailyAssessment",DailyAssessmentSchema,"DailyAssessment");
-export const MedicationsCollection =mongoose.model("Medication",MedicationSchema,"Medication");
+export const VitalsCollection = mongoose.model("PatientVital",VitalSchema, "PatientVital");
+export const PatientsCollection = mongoose.model("Patient",PatientSchema,"Patient");
+export const DailyAssessmentsCollection = mongoose.model("DailyAssessment",DailyAssessmentSchema,"DailyAssessment");
+export const MedicationsCollection = mongoose.model("Medication",MedicationSchema,"Medication");
 
 export class MongoConnection {
-
   public init(username: string, password: string) {
     mongoose.Promise = global.Promise;
-    // const uri=`mongodb://${username}:${password}@ds040309.mlab.com:40309/vienna`
-    // mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(_ => {
-    //   console.log('MongoConnection established...');
-    // });
-   const dbconnectionstring= `mongodb+srv://${username}:${password}@vienna-cluster-tzrt1.mongodb.net/test?retryWrites=true&w=majority`
-   mongoose.connect(dbconnectionstring, { useNewUrlParser: true,  dbName: 'Kovitakip',useUnifiedTopology: true }).then(_ => {
-    console.log('Mongo atlas Connection established...');
-    DoctorsCollection.findOne({}).then((r) => {
-      console.log(r);
-  })
-  })
 
-}
+    const connectionstring= `mongodb+srv://${username}:${password}@vienna-cluster-tzrt1.mongodb.net/test?retryWrites=true&w=majority`;
+
+    mongoose.connect(connectionstring, { useNewUrlParser: true,  dbName: 'Kovitakip', useUnifiedTopology: true }).then(_ => {
+      console.log('Mongo atlas Connection established...');
+    });
+  }
 }
