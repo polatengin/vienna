@@ -11,7 +11,8 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class MedicationDeletePageComponent {
 
-  patientId: number;
+  
+  medication;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Delete Medication');
@@ -19,13 +20,13 @@ export class MedicationDeletePageComponent {
     layout.showBackButton();
 
     route.params.subscribe(params => {
-      this.patientId = params["id"];
+      this.api.getMedication(params["id"]).subscribe(_ => this.medication = _);
     });
   }
 
   delete() {
-    this.api.deleteMedication(this.patientId).subscribe(_ => {
-      this.router.navigate(['/medication/', this.patientId]);
+    this.api.deleteMedication(this.medication._id).subscribe(_ => {
+      this.router.navigate(['/medication/', this.medication.patientId]);
     });
   }
 

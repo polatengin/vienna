@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   save(request: VitalRequestModel) {
-    return this.http.post(`${BASE}vital/add`, request);
+    return this.http.post(`${BASE}vital/add/${request.patientId}`, request);
   }
 
   savePatient(request: NewPatientRequestModel) {
@@ -28,15 +28,15 @@ export class ApiService {
   }
 
   saveDailyAssessment(request: DailyAssessmentRequestModel) {
-    return this.http.post(`${BASE}dailyassessment/add`, request);
+    return this.http.post(`${BASE}dailyassessment/add/${request.patientId}`, request);
   }
 
   saveMedication(request: MedicationRequestModel) {
-    return this.http.post(`${BASE}medication/add`, request);
+    return this.http.post(`${BASE}medication/add/${request.patientId}`, request);
   }
 
   updateDoctor(request: UpdateDoctorRequestModel) {
-   return this.http.put(`${BASE}doctor/edit/${request.doctorId}`, request);
+   return this.http.put(`${BASE}doctor/edit/${request._id}`, request);
   }
 
   updatePatient(request: NewPatientRequestModel) {
@@ -44,15 +44,15 @@ export class ApiService {
   }
 
   updateVital(request: VitalRequestModel) {
-    return this.http.put(`${BASE}vital/edit/${request.vitalId}`, request);
+    return this.http.put(`${BASE}vital/edit/${request._id}`, request);
   }
 
   updateDailyAssessment(request: DailyAssessmentRequestModel) {
-    return this.http.put(`${BASE}dailyassessment/edit/${request.dailyAssessmentId}`, request);
+    return this.http.put(`${BASE}dailyassessment/edit/${request._id}`, request);
   }
 
   updateMedication(request: MedicationRequestModel) {
-    return this.http.put(`${BASE}medication/edit/${request.medicationId}`, request);
+    return this.http.put(`${BASE}medication/edit/${request._id}`, request);
   }
 
   deleteVital(vitalId: number) {

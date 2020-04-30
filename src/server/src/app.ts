@@ -38,7 +38,7 @@ app.post('/login', (req, res) => {
 
 /*************** Vital **********************/
 
-app.post('/vital/add', (req, res) => {
+app.post('/vital/add/:id', (req, res) => {
   let vital = new VitalsCollection(req.body);
   vital.save((error,data) => {
     if(error) {
@@ -170,7 +170,7 @@ app.delete('/doctor/delete/:id', (req, res, next) => {
 
 /***************  Daily Assessment ********************* */
 
-app.post('/dailyassessment/add', (req, res) => {
+app.post('/dailyassessment/add/:id', (req, res) => {
   let dailyAssessment = new DailyAssessmentsCollection(req.body);
 
   dailyAssessment.save((error,data)=>{
@@ -212,7 +212,7 @@ app.delete('/dailyassessment/delete/:id', (req, res, next) => {
 
 /********************* Medication *************************** */
 
-app.post('/medication/add', (req, res) => {
+app.post('/medication/add/:id', (req, res) => {
   let medication= new MedicationsCollection(req.body);
 
   medication.save((error,data) => {

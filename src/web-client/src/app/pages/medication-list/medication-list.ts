@@ -22,10 +22,14 @@ export class MedicationListPageComponent {
     route.params.subscribe(params => {
       this.api.getMedications(params["id"]).subscribe(_ => this.medications = _);
     });
+
+    route.params.subscribe(params => {
+      this.patientId = params["id"];
+    });
   }
 
   gotoAddMedicationPage() {
-    this.router.navigate(['/medication/add']);
+    this.router.navigate(['/medication/add/',this.patientId]);
   }
 
   gotoEditPage(medicationId: number) {

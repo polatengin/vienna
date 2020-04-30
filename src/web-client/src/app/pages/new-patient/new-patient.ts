@@ -22,8 +22,12 @@ export class NewPatientPageComponent {
   }
 
   save() {
-    this.api.savePatient(this.request);
-    this.router.navigate(['/patient']);
+    this.api.savePatient(this.request).subscribe(_ =>{
+      this.router.navigate(['/patient']);
+    })
+    
   }
+
+  
 
 }

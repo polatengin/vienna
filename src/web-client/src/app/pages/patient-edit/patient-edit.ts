@@ -26,8 +26,11 @@ export class PatientEditPageComponent {
   }
 
   update() {
-    this.api.updatePatient(this.patient);
-    this.router.navigate(['/patient']);
+    this.api.updatePatient(this.patient).subscribe(_ =>{
+      this.router.navigate(['/patient']);
+    });
+    
   }
 
+  
 }

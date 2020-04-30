@@ -12,7 +12,7 @@ import { LayoutService } from '../../services/layout.service';
 export class VitalListPageComponent {
 
   vitals;
-
+  patientId;
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Vital List');
     layout.showMenu();
@@ -21,10 +21,14 @@ export class VitalListPageComponent {
     route.params.subscribe(params => {
       api.getVitals(params["id"]).subscribe(_ => this.vitals = _);
     });
+
+    route.params.subscribe(params => {
+      this.patientId = params["id"];
+    });
   }
 
   gotoAddVitalPage(){
-    this.router.navigate(['/vital/add']);
+    this.router.navigate(['/vital/add',this.patientId]);
   }
 
   gotoEditPage(vitalId: number) {

@@ -24,11 +24,14 @@ export class MedicationEditPageComponent {
     route.params.subscribe(params => {
       this.api.getMedication(params["id"]).subscribe(_ => this.medication = _);
     });
+    
   }
 
   update() {
-    this.api.updateMedication(this.medication);
-    this.router.navigate(['/medication/', this.medication.patientId]);
+    this.api.updateMedication(this.medication).subscribe(_ =>{
+      this.router.navigate(['/medication/', this.medication.patientId]);
+    })
+    
   }
 
 }

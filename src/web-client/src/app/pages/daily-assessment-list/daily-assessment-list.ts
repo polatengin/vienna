@@ -12,7 +12,7 @@ import { LayoutService } from '../../services/layout.service';
 export class DailyAssessmentListPageComponent {
 
   model;
-
+  patientId: number;
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle('Daily Assessment List');
     layout.showMenu();
@@ -21,10 +21,14 @@ export class DailyAssessmentListPageComponent {
     route.params.subscribe(params => {
       api.getDailyAssessments(params["id"]).subscribe(data => this.model = data);
     });
+
+    route.params.subscribe(params => {
+      this.patientId = params["id"];
+    });
   }
 
   gotoAddDailyAssessmentPage() {
-    this.router.navigate(['/dailyassessment/add']);
+    this.router.navigate(['/dailyassessment/add/', this.patientId]);
   }
 
   gotoEditPage(dailyAssessmentId: number) {

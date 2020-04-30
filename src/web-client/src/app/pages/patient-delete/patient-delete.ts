@@ -24,9 +24,11 @@ export class PatientDeletePageComponent {
   }
 
   delete() {
-    this.api.deletePatient(this.patientId);
+    this.api.deletePatient(this.patientId).subscribe(_ => {
+      this.router.navigate(['/patient']);
+    })
 
-    this.router.navigate(['/patient']);
+    
   }
 
 }

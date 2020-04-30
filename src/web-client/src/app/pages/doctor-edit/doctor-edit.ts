@@ -16,7 +16,7 @@ export class DoctorEditPageComponent {
   specialties;
   doctor;
 
-  constructor(layout: LayoutService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(layout: LayoutService, private api: ApiService, private router: Router, private route: ActivatedRoute) {
     layout.updateTitle('Edit Doctor');
     layout.showMenu();
     layout.showBackButton();
@@ -29,7 +29,9 @@ export class DoctorEditPageComponent {
   }
 
   update() {
-    this.api.updateDoctor(this.doctor);
+    this.api.updateDoctor(this.doctor).subscribe(_ =>{
+      this.router.navigate(['/doctor']);
+    })
   }
 
 }

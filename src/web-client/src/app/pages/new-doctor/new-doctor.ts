@@ -25,7 +25,9 @@ export class NewDoctorPageComponent {
   }
 
   save() {
-    this.api.saveDoctor(this.request);
+    this.api.saveDoctor(this.request).subscribe(_ =>{
+      this.router.navigate(['/doctor']);
+    })
   }
 
 }

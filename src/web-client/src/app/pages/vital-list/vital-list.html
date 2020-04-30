@@ -14,10 +14,10 @@
       <div mat-line>{{vital.date | date}}</div>
       <div mat-line>{{vital.patientId}}</div>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{vital._id}} (click)="gotoEditPage($event.target)">edit</mat-icon>
+        <mat-icon matSuffix  (click)="gotoEditPage(vital._id)">edit</mat-icon>
       </button>
       <button  mat-icon-button>
-        <mat-icon matSuffix id={{vital._id}} (click)="gotoDeletePage($event.target)">delete</mat-icon>
+        <mat-icon matSuffix  (click)="gotoDeletePage(vital._id)">delete</mat-icon>
       </button>
       <mat-divider></mat-divider>
     </mat-list-item>

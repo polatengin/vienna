@@ -25,10 +25,16 @@ export class VitalPageComponent {
         this.request.patientId=_.patientId;
       });
     });
+
+    route.params.subscribe(params => {
+      this.request.patientId = params["id"];
+    });
   }
 
   save() {
-    this.api.save(this.request);
+    this.api.save(this.request).subscribe(_ =>{
+      this.router.navigate(['/vital/'+this.request.patientId]);
+    })
   }
 
 }

@@ -27,7 +27,7 @@ export class EditPatientRequestModel {
 }
 
 export class NewDoctorRequestModel {
-  doctorId: string;
+  _id: string;
   fullName: string;
   phoneNumber: string;
   dateofBirth: Date;
@@ -38,7 +38,7 @@ export class NewDoctorRequestModel {
 }
 
 export class UpdateDoctorRequestModel {
-  doctorId: string;
+  _id: string;
   fullName: string;
   phoneNumber: string;
   dateofBirth: Date;
@@ -113,7 +113,7 @@ export class GetPatientResponseModel {
 }
 
 export class VitalRequestModel {
-  vitalId: string;
+  _id: string;
   patientId: string;
   respiration: string;
   pulse: string;
@@ -124,7 +124,7 @@ export class VitalRequestModel {
 }
 
 export class DailyAssessmentRequestModel{
-  dailyAssessmentId: string;
+  _id: string;
   patientId: string;
   firstTemperature: string;
   secondTemperature: string;
@@ -136,7 +136,7 @@ export class DailyAssessmentRequestModel{
 }
 
 export class MedicationRequestModel{
-  medicationId: number;
+  _id: number;
   patientId: string;
   medicine: string;
   dose: string;
