@@ -17,7 +17,7 @@ export class DoctorEditPageComponent {
   doctor;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, private route: ActivatedRoute) {
-    layout.updateTitle('Edit Doctor');
+    layout.updateTitle(this.api.doctorName);
     layout.showMenu();
     layout.showBackButton();
 

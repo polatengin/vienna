@@ -16,7 +16,7 @@ export class PatientEditPageComponent {
   patient: EditPatientRequestModel;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Edit Patient');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

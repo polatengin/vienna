@@ -38,15 +38,21 @@ export class PatientListPageComponent {
   }
 
   gotoMedicationPage(patientId: number) {
-    this.router.navigate(['/medication/', patientId]);
+    this.router.navigate(['/medication/', patientId]);   
   }
 
-  gotoEditPage(patientId: number) {
+  gotoEditPage(patientId: number, patientName: string) {
     this.router.navigate(['/patient/edit/', patientId]);
+    this.api.patientName=patientName;
   }
 
-  gotoDeletePage(patientId: number){
+  gotoDeletePage(patientId: number, patientName: string){
     this.router.navigate(['/patient/delete/', patientId]);
+    this.api.patientName=patientName;
+  }
+
+  getPatientName(patientName: string){
+    this.api.patientName=patientName;
   }
 
 }

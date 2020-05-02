@@ -16,7 +16,7 @@ export class VitalPageComponent {
   request: VitalRequestModel = new VitalRequestModel();
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle("patientName");
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

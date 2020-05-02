@@ -16,7 +16,7 @@ export class MedicationAddPageComponent {
   request: MedicationRequestModel = new MedicationRequestModel();
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle("patientName");
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

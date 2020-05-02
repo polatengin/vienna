@@ -17,7 +17,7 @@ export class VitalDeletePageComponent {
   vital;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Delete Vital');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

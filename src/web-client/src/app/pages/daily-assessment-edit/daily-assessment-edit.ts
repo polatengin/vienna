@@ -14,7 +14,7 @@ export class DailyAssessmentEditPageComponent {
   dailyAssessment;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Edit Daily Assessment');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

@@ -9,6 +9,8 @@ const BASE: string = 'http://localhost:3000/';
 
 @Injectable()
 export class ApiService {
+  patientName;
+  doctorName;
   constructor(private http: HttpClient) {}
 
   login(request: LoginRequestModel): Observable<LoginResponseModel> {

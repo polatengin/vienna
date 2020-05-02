@@ -15,7 +15,7 @@ export class DailyAssessmentDeletePageComponent {
   dailyAssessment;
   
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Delete Daily Assessment');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
    

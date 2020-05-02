@@ -14,7 +14,7 @@ export class PatientDeletePageComponent {
   patientId: number;
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Delete Patient');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
     

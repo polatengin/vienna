@@ -14,7 +14,7 @@ export class DailyAssessmentListPageComponent {
   model;
   patientId: number;
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Daily Assessment List');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

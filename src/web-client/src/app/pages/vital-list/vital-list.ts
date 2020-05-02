@@ -14,7 +14,7 @@ export class VitalListPageComponent {
   vitals;
   patientId;
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
-    layout.updateTitle('Vital List');
+    layout.updateTitle(this.api.patientName);
     layout.showMenu();
     layout.showBackButton();
 

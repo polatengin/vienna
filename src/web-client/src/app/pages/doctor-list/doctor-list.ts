@@ -43,12 +43,14 @@ export class DoctorListPageComponent {
     }
    }
 
-  gotoEditPage(doctorId) {
+  gotoEditPage(doctorId, doctorName) {
     this.router.navigate(['/doctor/edit/', doctorId]);
+    this.api.doctorName=doctorName;
   }
 
-  gotoDeletePage(doctorId){
+  gotoDeletePage(doctorId, doctorName){
     this.router.navigate(['/doctor/delete/', doctorId]);
+    this.api.doctorName=doctorName;
   }
 
 }
