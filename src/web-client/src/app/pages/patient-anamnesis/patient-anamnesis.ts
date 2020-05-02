@@ -53,4 +53,8 @@ panelOpenState = false;
     newFamilyMember.value="";
    }
 
+   show(){
+    document.getElementById('frequency').style.display='inline';
+  }
+
 }

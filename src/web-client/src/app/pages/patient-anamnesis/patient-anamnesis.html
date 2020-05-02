@@ -266,9 +266,121 @@
 </mat-expansion-panel>
 </mat-accordion>
 <br><br>
+<!------ Medication Part ----------->
+<h3 style="text-align:center;">Medicine</h3>
+<mat-divider></mat-divider><br>
+<mat-accordion>
+  <mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add medicine
+    </mat-panel-title>
+    
+  </mat-expansion-panel-header>
+  <mat-form-field class="full-width">
+    <mat-label>Medicine</mat-label>
+    <mat-select  name="medicine">
+      <mat-option value="">None</mat-option>
+      <mat-option value="Aspirin">Aspirin</mat-option>
+      <mat-option value="Minoset">Minoset</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" >
+    <input type="number"  matInput placeholder="Count" >
+  </mat-form-field>
+  
+  <button style="margin-left: 15px;" mat-raised-button color="primary">
+    Add<mat-icon>add</mat-icon>
+  </button>
+  
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+  
+  
+  </mat-expansion-panel>
+  </mat-accordion>
+<br>
+<!------ Allergies Part ----------->
+<h3 style="text-align:center;">Allergies</h3>
+<mat-divider></mat-divider><br>
+<mat-accordion>
+<mat-expansion-panel>
+<mat-expansion-panel-header>
+  <mat-panel-title>
+    Add allergy
+  </mat-panel-title>
+  
+</mat-expansion-panel-header>
+<mat-form-field>
+  <mat-label>Allergy</mat-label>
+  <mat-select  name="medicine">
+    <mat-option value="">None</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<button style="margin-left: 15px;" mat-raised-button color="primary">
+  Add<mat-icon>add</mat-icon>
+</button>
+
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                   (closed)="panelOpenState = false">
+
+
+</mat-expansion-panel>
+</mat-accordion>
+<br>
+<!------ Tobacco/Alchol/Drug Part ----------->
+<h3 style="text-align:center;">Tobacco/Alchol/Drug</h3>
+<mat-divider></mat-divider><br>
+
+<div>
+<label>Sigara: </label>
+<mat-radio-group>
+  <mat-radio-button  style="margin: 0 25px;" value="Kullanıyor" (click)='show()'>Kullanıyor</mat-radio-button>
+  <mat-radio-button style="margin: 0 25px;" value="Bırakmış">Bırakmış</mat-radio-button>
+</mat-radio-group>
+</div><br>
+
+<mat-form-field id="frequency" style="display: none;" appearance="outline" >
+<input type="text"  matInput placeholder="Sıklık" >
+</mat-form-field>
+<br>
+<div>
+<label>Alkol: </label>
+<mat-radio-group>
+  <mat-radio-button style="margin: 0 20px;"  value="Sosyal">Sosyal</mat-radio-button>
+  <mat-radio-button style="margin: 0 20px;"  value="Hiç">Hiç</mat-radio-button>
+  <mat-radio-button style="margin: 0 20px;"  value="Bağımlı">Bağımlı</mat-radio-button>
+</mat-radio-group>
+</div><br>
+
+<div>
+<label>Uyuşturucu: </label>
+<mat-radio-group>
+  <mat-radio-button style="margin: 0 25px;"  value="Evet">Evet</mat-radio-button>
+  <mat-radio-button style="margin: 0 25px;"  value="Hayır">Hayır</mat-radio-button>
+  
+</mat-radio-group>
+</div><br><br>
+<!-----------Comments Part---------------->
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>Comments</mat-label>
+<textarea matInput></textarea>
+</mat-form-field><br>
+<!-----------Diagnosis Part---------------->
+<mat-form-field class="full-width" appearance="outline">
+<mat-label>Diagnosis</mat-label>
+<textarea matInput></textarea>
+</mat-form-field>
+  
    
     </mat-card-content>
     <mat-card-actions>
-      
+      <button mat-raised-button color="primary">
+        Save<mat-icon>chevron_right</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
