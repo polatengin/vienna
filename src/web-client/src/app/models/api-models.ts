@@ -17,6 +17,7 @@ export class PatientListResponseModel {
 }
 
 export class EditPatientRequestModel {
+  _id: string;
   fullName: string;
   phoneNumber: string;
   dateofBirth: Date;
@@ -103,6 +104,7 @@ export class NewPatientRequestModel {
 }
 
 export class GetPatientResponseModel {
+  _id: string;
   fullName: string;
   phoneNumber: string;
   dateofBirth: Date;

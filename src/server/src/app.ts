@@ -102,21 +102,21 @@ app.get('/patient', (req, res) => {
 });
 
 app.put('/patient/edit/:id', (req, res, next) => {
-  PatientsCollection.findOneAndUpdate({patientId:req.params.id}, req.body, (err,post) => {
+  PatientsCollection.findByIdAndUpdate(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
   });
 });
 
 app.get('/patient/edit/:id', (req, res, next) => {
-  PatientsCollection.findOne({patientId:req.params.id}, (err, post) => {
+  PatientsCollection.findById(req.params.id, (err, post) => {
     if(err) return next(err);
     res.json(post);
   });
 });
 
 app.delete('/patient/delete/:id', (req, res, next) => {
-  PatientsCollection.findOneAndRemove({patientId:req.params.id}, req.body, (err,post) => {
+  PatientsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
     if(err) return next(err);
     res.json(post);
   });

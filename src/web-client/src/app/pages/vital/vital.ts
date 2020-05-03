@@ -22,13 +22,11 @@ export class VitalPageComponent {
 
     route.params.subscribe(params => {
       this.api.getPatient(params["id"]).subscribe(_ => {
-        this.request.patientId=_.patientId;
+        this.request.patientId=_._id;
       });
     });
 
-    route.params.subscribe(params => {
-      this.request.patientId = params["id"];
-    });
+  
   }
 
   save() {

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { LoginRequestModel, LoginResponseModel, VitalRequestModel, NewPatientRequestModel, DailyAssessmentRequestModel, MedicationRequestModel, PatientListResponseModel, NewDoctorRequestModel, UpdateDoctorRequestModel, GetPatientResponseModel } from '../models/api-models';
+import { LoginRequestModel, LoginResponseModel, VitalRequestModel, NewPatientRequestModel, DailyAssessmentRequestModel, MedicationRequestModel, PatientListResponseModel, NewDoctorRequestModel, UpdateDoctorRequestModel, GetPatientResponseModel,EditPatientRequestModel } from '../models/api-models';
 
 const BASE: string = 'http://localhost:3000/';
 
@@ -41,8 +41,8 @@ export class ApiService {
    return this.http.put(`${BASE}doctor/edit/${request._id}`, request);
   }
 
-  updatePatient(request: NewPatientRequestModel) {
-    return this.http.put(`${BASE}patient/edit/${request.patientId}`, request);
+  updatePatient(request: EditPatientRequestModel) {
+    return this.http.put(`${BASE}patient/edit/${request._id}`, request);
   }
 
   updateVital(request: VitalRequestModel) {

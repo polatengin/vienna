@@ -22,7 +22,7 @@ export class DailyAssessmentPageComponent {
 
     route.params.subscribe(params => {
       this.api.getPatient(params["id"]).subscribe(_ => {
-        this.request.patientId = _.patientId;
+        this.request.patientId = _._id;
       });
     });
   }

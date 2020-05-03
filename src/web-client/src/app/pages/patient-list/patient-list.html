@@ -12,10 +12,10 @@
     <mat-icon mat-list-icon>account_circle</mat-icon>
     <div mat-line>{{patient.fullName}}</div>
     <div mat-line>{{patient.dateofBirth|date}}-({{patient.gender}})</div>
-    <button mat-icon-button (click)="gotoEditPage(patient.patientId, patient.fullName)">
+    <button mat-icon-button (click)="gotoEditPage(patient._id, patient.fullName)">
       <mat-icon matSuffix>edit</mat-icon>
     </button>
-    <button mat-icon-button (click)="gotoDeletePage(patient.patientId, patient.fullName)">
+    <button mat-icon-button (click)="gotoDeletePage(patient._id, patient.fullName)">
       <mat-icon matSuffix>delete</mat-icon>
     </button>
     <button mat-icon-button  [matMenuTriggerFor]="menu">
@@ -23,9 +23,9 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Patient Admission</button>
-      <button mat-menu-item (click)="gotoDailyAssessmentPage(patient.patientId)">Daily Assessment</button>
-      <button mat-menu-item (click)="gotoVitalPage(patient.patientId)">Vitals</button>
-      <button mat-menu-item (click)="gotoMedicationPage(patient.patientId)">Medication</button>
+      <button mat-menu-item (click)="gotoDailyAssessmentPage(patient._id)">Daily Assessment</button>
+      <button mat-menu-item (click)="gotoVitalPage(patient._id)">Vitals</button>
+      <button mat-menu-item (click)="gotoMedicationPage(patient._id)">Medication</button>
     </mat-menu>
     <mat-divider></mat-divider>
   </mat-list-item>
