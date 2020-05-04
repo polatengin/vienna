@@ -5,6 +5,7 @@ export class LoginRequestModel {
 
 export class LoginResponseModel {
   isActive: boolean;
+  _id: string;
 }
 
 export class PatientListResponseModel {
@@ -101,6 +102,7 @@ export class NewPatientRequestModel {
   email: string;
   patientId: string;
   date: Date;
+  userId: string;
 }
 
 export class GetPatientResponseModel {
