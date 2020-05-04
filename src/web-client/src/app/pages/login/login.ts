@@ -12,16 +12,17 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./login.scss']
 })
 export class LoginPageComponent {
-
+  
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('Login');
   }
-
+  
   request: LoginRequestModel = new LoginRequestModel();
 
   login() {
-    this.api.login(this.request).subscribe(_ => {
+    this.api.login(this.request).subscribe(_ => {  
       if (_ && _.isActive) {
+        sessionStorage.setItem('onlineUser', _._id);
         this.router.navigate(['/patient']);
       }
     });
