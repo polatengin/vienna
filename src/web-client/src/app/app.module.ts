@@ -35,32 +35,33 @@ import { MedicationEditPageComponent } from './pages/medication-edit/medication-
 import { MedicationDeletePageComponent } from './pages/medication-delete/medication-delete';
 import { PatientAnamnesisPageComponent } from './pages/patient-anamnesis/patient-anamnesis';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
+import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'patient', component: PatientListPageComponent },
-  { path: 'patient/add', component: NewPatientPageComponent },
-  { path: 'vital/add/:id', component: VitalPageComponent },
-  { path: 'doctor/add', component: NewDoctorPageComponent },
-  { path: 'doctor',component: DoctorListPageComponent},
-  { path: 'doctor/edit/:id',component: DoctorEditPageComponent},
-  { path: 'patient/edit/:id',component: PatientEditPageComponent},
-  { path: 'vital/:id',component: VitalListPageComponent},
-  { path: 'vital/edit/:id',component: VitalEditPageComponent},
-  { path: 'vital/delete/:id',component: VitalDeletePageComponent},
-  { path: 'patient/delete/:id',component: PatientDeletePageComponent},
-  { path: 'doctor/delete/:id',component: DoctorDeletePageComponent},
-  { path: 'dailyassessment/add/:id',component: DailyAssessmentPageComponent},
-  { path: 'dailyassessment/:id',component: DailyAssessmentListPageComponent},
-  { path: 'dailyassessment/edit/:id',component: DailyAssessmentEditPageComponent},
-  { path: 'dailyassessment/delete/:id',component: DailyAssessmentDeletePageComponent},
-  { path: 'medication/add/:id',component: MedicationAddPageComponent},
-  { path: 'medication/:id',component: MedicationListPageComponent},
-  { path: 'medication/edit/:id',component: MedicationEditPageComponent},
-  { path: 'medication/delete/:id',component: MedicationDeletePageComponent},
-  { path: 'patientanamnesis/add',component: PatientAnamnesisPageComponent}
+  { path: 'patient', component: PatientListPageComponent, canActivate: [AuthGuard]  },
+  { path: 'patient/add', component: NewPatientPageComponent, canActivate: [AuthGuard]  },
+  { path: 'vital/add/:id', component: VitalPageComponent, canActivate: [AuthGuard]  },
+  { path: 'doctor/add', component: NewDoctorPageComponent, canActivate: [AuthGuard]  },
+  { path: 'doctor',component: DoctorListPageComponent, canActivate: [AuthGuard]},
+  { path: 'doctor/edit/:id',component: DoctorEditPageComponent, canActivate: [AuthGuard]},
+  { path: 'patient/edit/:id',component: PatientEditPageComponent, canActivate: [AuthGuard]},
+  { path: 'vital/:id',component: VitalListPageComponent, canActivate: [AuthGuard]},
+  { path: 'vital/edit/:id',component: VitalEditPageComponent, canActivate: [AuthGuard]},
+  { path: 'vital/delete/:id',component: VitalDeletePageComponent, canActivate: [AuthGuard]},
+  { path: 'patient/delete/:id',component: PatientDeletePageComponent, canActivate: [AuthGuard]},
+  { path: 'doctor/delete/:id',component: DoctorDeletePageComponent, canActivate: [AuthGuard]},
+  { path: 'dailyassessment/add/:id',component: DailyAssessmentPageComponent, canActivate: [AuthGuard]},
+  { path: 'dailyassessment/:id',component: DailyAssessmentListPageComponent, canActivate: [AuthGuard]},
+  { path: 'dailyassessment/edit/:id',component: DailyAssessmentEditPageComponent, canActivate: [AuthGuard]},
+  { path: 'dailyassessment/delete/:id',component: DailyAssessmentDeletePageComponent, canActivate: [AuthGuard]},
+  { path: 'medication/add/:id',component: MedicationAddPageComponent, canActivate: [AuthGuard]},
+  { path: 'medication/:id',component: MedicationListPageComponent, canActivate: [AuthGuard]},
+  { path: 'medication/edit/:id',component: MedicationEditPageComponent, canActivate: [AuthGuard]},
+  { path: 'medication/delete/:id',component: MedicationDeletePageComponent, canActivate: [AuthGuard]},
+  { path: 'patientanamnesis/add',component: PatientAnamnesisPageComponent, canActivate: [AuthGuard]}
   
 
 ];
