@@ -27,7 +27,8 @@ const PatientSchema=new mongoose.Schema({
   gender: String,
   email: String,
   patientId: String,
-  date: Date
+  date: Date,
+  userId: String
 }, { timestamps: true });
 
 const DailyAssessmentSchema=new mongoose.Schema({
