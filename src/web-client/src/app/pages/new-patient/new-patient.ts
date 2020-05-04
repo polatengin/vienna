@@ -14,11 +14,13 @@ import { NewPatientRequestModel } from '../../models/api-models';
 export class NewPatientPageComponent {
 
   request: NewPatientRequestModel = new NewPatientRequestModel();
+  
 
   constructor(layout: LayoutService, private api: ApiService, private router: Router) {
     layout.updateTitle('New Patient');
     layout.showMenu();
     layout.showBackButton();
+    this.request.userId=sessionStorage.getItem('onlineUser');
   }
 
   save() {
