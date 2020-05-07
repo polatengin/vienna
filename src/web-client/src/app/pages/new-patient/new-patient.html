@@ -36,6 +36,13 @@
       <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
       <mat-datepicker #datePicker></mat-datepicker>
     </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>IsActive</mat-label>
+      <mat-select [(ngModel)]="request.isActive">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+    </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="save()">
