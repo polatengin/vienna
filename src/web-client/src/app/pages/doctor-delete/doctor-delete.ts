@@ -12,7 +12,7 @@ import { LayoutService } from '../../services/layout.service';
 export class DoctorDeletePageComponent {
 
   doctorId: number;
-
+  isActive=false; 
   constructor(layout: LayoutService, private api: ApiService, private router: Router, route: ActivatedRoute) {
     layout.updateTitle(this.api.doctorName);
     layout.showMenu();
@@ -24,7 +24,7 @@ export class DoctorDeletePageComponent {
   }
 
   delete() {
-    this.api.deleteDoctor(this.doctorId).subscribe(_ => {
+    this.api.deleteDoctor(this.doctorId,this.isActive).subscribe(_ => {
       this.router.navigate(['/doctor']);
     });
   }

@@ -125,7 +125,7 @@ app.put('/patient/delete/:id', (req, res, next) => {
 /**********************  Doctor *******************************/
 
 app.get('/doctor', (req, res) => {
-  DoctorsCollection.find({}, (error, data) => {
+  DoctorsCollection.find({isActive:true}, (error, data) => {
     if (error) {
       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
     }
@@ -161,8 +161,8 @@ app.get('/doctor/edit/:id', (req, res, next) => {
   });
 });
 
-app.delete('/doctor/delete/:id', (req, res, next) => {
-  DoctorsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
+app.put('/doctor/delete/:id', (req, res, next) => {
+  DoctorsCollection.findByIdAndUpdate(req.params.id, {isActive:false}, (err,post) => {
     if(err) return next(err);
     res.json(post);
   });

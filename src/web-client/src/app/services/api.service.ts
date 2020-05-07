@@ -73,8 +73,8 @@ export class ApiService {
     return this.http.put(`${BASE}patient/delete/${patientId}`,isActive);
   }
 
-  deleteDoctor(doctorId: number) {
-    return this.http.delete(`${BASE}doctor/delete/${doctorId}`);
+  deleteDoctor(doctorId: number,isActive:boolean) {
+    return this.http.put(`${BASE}doctor/delete/${doctorId}`,isActive);
   }
 
   getPatients(): Observable<PatientListResponseModel[]> {
