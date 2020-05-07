@@ -12,7 +12,8 @@
     <mat-list-item *ngFor="let vital of vitals">
       
       <div mat-line>{{vital.date | date}}</div>
-      <div mat-line>{{vital.patientId}}</div>
+      <div mat-line><b>Respiration:</b>{{vital.respiration}}  <b>Pulse:</b>{{vital.pulse}}</div>
+      <div mat-line><b>Temperature:</b>{{vital.temperature}} <b>Blood Pressure:</b> {{vital.bloodPressure1}}/{{vital.bloodPressure2}}</div>
       <button  mat-icon-button>
         <mat-icon matSuffix  (click)="gotoEditPage(vital._id)">edit</mat-icon>
       </button>
