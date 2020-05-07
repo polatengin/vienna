@@ -91,7 +91,7 @@ app.post('/patient/add', (req, res) => {
 });
 
 app.get('/patient', (req, res) => {
-  PatientsCollection.find({}, (error, data) => {
+  PatientsCollection.find({isActive:true}, (error, data) => {
     if (error) {
       res.send("Beklenmeyen bir hatayla karşılaşıldı...");
     }
@@ -115,8 +115,8 @@ app.get('/patient/edit/:id', (req, res, next) => {
   });
 });
 
-app.delete('/patient/delete/:id', (req, res, next) => {
-  PatientsCollection.findByIdAndRemove(req.params.id, req.body, (err,post) => {
+app.put('/patient/delete/:id', (req, res, next) => {
+  PatientsCollection.findByIdAndUpdate(req.params.id, {isActive:false}, (err,post) => {
     if(err) return next(err);
     res.json(post);
   });
@@ -251,6 +251,8 @@ app.delete('/medication/delete/:id', (req, res, next) => {
     res.json(post);
   });
 });
+
+
 
 /**************************************************************** */
 

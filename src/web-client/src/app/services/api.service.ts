@@ -69,8 +69,8 @@ export class ApiService {
     return this.http.delete(`${BASE}dailyassessment/delete/${dailyAssessmentId}`);
   }
 
-  deletePatient(patientId: number) {
-    return this.http.delete(`${BASE}patient/delete/${patientId}`);
+  deletePatient(patientId: number,isActive:boolean) {
+    return this.http.put(`${BASE}patient/delete/${patientId}`,isActive);
   }
 
   deleteDoctor(doctorId: number) {
