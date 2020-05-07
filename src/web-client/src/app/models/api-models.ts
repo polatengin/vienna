@@ -26,6 +26,7 @@ export class EditPatientRequestModel {
   email: string;
   patientId: string;
   date: Date;
+  isActive:boolean;
 }
 
 export class NewDoctorRequestModel {
@@ -103,6 +104,7 @@ export class NewPatientRequestModel {
   patientId: string;
   date: Date;
   userId: string;
+  isActive:boolean;
 }
 
 export class GetPatientResponseModel {
@@ -114,6 +116,7 @@ export class GetPatientResponseModel {
   email: string;
   patientId: string;
   date: Date;
+  isActive:boolean;
 }
 
 export class VitalRequestModel {
@@ -146,3 +149,4 @@ export class MedicationRequestModel{
   dose: string;
   date: Date;
 }
+
